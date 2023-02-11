@@ -11,3 +11,38 @@
 .container{
     width: 1000px;
 }
+#left{
+    float: left;
+
+}
+#yel1{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: aqua;
+    margin-right: 5px;
+}
+#yel2{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color:red;
+    margin-right: 5px;
+}
+#yel3{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: sandybrown;
+    margin-right: 5px;
+}
+#m1{
+    margin: 3px;
+}
+.yel{
+    display: flex;
+    justify-content: right;
+}
+.d1{
+    position: relative;
+}

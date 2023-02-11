@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Title from './components/Title';
 import {useState} from "react";
 import Card from './components/Card';
+import Homepage from './components/Homepage';
 
 function App() {
   const [todo,setTodo] = useState([]);
@@ -18,6 +19,9 @@ function App() {
     
   }
 console.log(todo);
+// return<>
+// <Homepage/>
+// </>
 return <>
 <Card/>
 </>;
