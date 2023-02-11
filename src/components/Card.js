@@ -10,19 +10,14 @@ const Card = () => {
       <div class="card-body">
         <h5 class="card-title">The First task Title</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" id ="btn"class="btn btn-light">Done</a>
+        <input class="form-check-input" type="checkbox" value="" />
+  <label className="ms-3">
+    Done
+  </label>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">The Second task Title</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-light">Done</a>
-      </div>
-    </div>
-  </div>
+  
 </div>
     </div>
   )
