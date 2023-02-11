@@ -1,0 +1,13 @@
+.card{
+    background-color: lightyellow;
+    width : 500px
+}
+#btn{
+    display: flex;
+    /* align-items: right; */
+    justify-content: flex-end;
+
+}
+.container{
+    width: 1000px;
+}

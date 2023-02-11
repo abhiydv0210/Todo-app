@@ -18,23 +18,23 @@
 
   }
   
-  #yellow{
+  #buttonColor-0{
     /* background-color: blueviolet; */
     color : black;
   }
-  #green{
+  #buttonColor-1{
     /* background-color: brown; */
     color : black;
   }
-  #blue{
+  #buttonColor-2{
     /* background-color: burlywood; */
     color : black;
   }
-  #red{
+  #buttonColor-3{
     /* background-color: red; */
     color : black;
   }
-  #span1{
+  #span0{
     height: 40%;
     width: 10%;
     padding: 10px;
@@ -43,7 +43,7 @@
     border-radius: 100%;
 
   }
-  #span2{
+  #span1{
     height: 40%;
     width: 10%;
     padding: 10px;
@@ -52,7 +52,7 @@
     border-radius: 100%;
 
   }
-  #span3{
+  #span2{
     height: 40%;
     width: 10%;
     padding: 10px;
@@ -61,7 +61,7 @@
     border-radius: 100%;
 
   }
-  #span4{
+  #span3{
     height: 40%;
     width: 10%;
     padding: 10px;
