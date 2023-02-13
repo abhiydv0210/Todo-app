@@ -1,29 +1,57 @@
 import React from 'react';
 import "./Homepage.css";
+import Homepage1 from './Homepage1';
 
 function Homepage() {
+ 
+  
   return (
     
-            
-    <div className='f1'>
-    <h1>Todo</h1>
+      
+
+    
+<div>
+<Homepage1/>
+
+  
+  
+
+        <div className='col-sm-3'>
+        
+          
+        <button className='mt-4' id='dot-1'></button>
+        <label className='ms-1 my-auto'> Work</label>
+        
+      
+      <br/>
+      
+      <button className='mt-4' id='dot-2'></button>
+        <label className='ms-1 my-auto'> Study</label>
+      
+        <br/>
+        
+        <button className='mt-4' id='dot-3'></button>
+        <label className='ms-1 my-auto'> Entertainment</label>
+        
+        <br/>
+        
+        <button className='mt-4' id='dot-4'></button>
+        <label className='ms-1 my-auto'> Family</label>
+        
+        <br/>
+        
+        <input className='mt-5' type='checkbox'/>
+        <label className='ps-2'>Hide done tasks </label>
+        
+        </div>
+
+      </div>
+      
     
     
-    <div className='g1'><div id="c1"></div><div>Work</div></div>
+  
     
     
-    
-    
-    <div className="g2"><div id="c2"></div><div>Study</div></div>
-    
-    
-    <div className="g3"><div id="c3"></div><div>Entertainment</div></div>
-    
-   
-    <div className="g3"><div id="c4"></div><div>Family</div></div>
-    
-    
-    </div>      
     
 
   )

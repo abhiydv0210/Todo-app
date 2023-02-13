@@ -1,4 +1,4 @@
-
+import React, { useReducer } from 'react';
 import './App.css';
 import Buttons from './components/Buttons';
 import Navbar from './components/Navbar';
@@ -7,7 +7,20 @@ import {useState} from "react";
 import Card from './components/Card';
 import Homepage from './components/Homepage';
 
+
+const initialState={
+  
+};
+const reducer=(state,action)=>{
+
+}
+
+
+
+export const userContext = React.createContext();
+
 function App() {
+  const[state, dispatch] = useReducer(reducer, initialState)
   const [todo,setTodo] = useState([]);
   const [title, setTitle] = useState();
   const [des, setDes] = useState();
@@ -22,10 +35,11 @@ console.log(todo);
 // return<>
 // <Homepage/>
 // </>
-return <>
-<Card/>
-</>;
+// return <>
+// <Card/>
+// </>
   return (
+    <userContext.Provider value={{...state,dispatch }}>
     <div className="container">
       
       <div className='app-wrapper'>
@@ -44,6 +58,7 @@ return <>
     
       
     </div>
+    </userContext.Provider>
   );
 }
 
