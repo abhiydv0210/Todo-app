@@ -1,10 +1,10 @@
 import React from 'react';
+
 import "./Homepage.css";
 import Homepage1 from './Homepage1';
 
 function Homepage() {
  
-  
   return (
     
       
@@ -19,7 +19,7 @@ function Homepage() {
         <div className='col-sm-3'>
         
           
-        <button className='mt-4' id='dot-1'></button>
+        <button className='mt-4' id='dot-1' ></button>
         <label className='ms-1 my-auto'> Work</label>
         
       
