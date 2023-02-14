@@ -1,29 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useContext } from 'react';
+import { useState, useReducer } from 'react';
+import { userContext } from '../App';
 import Style from '../components/Button.module.css'
 
 const Buttons = (props) => {
-  const {selectedButton,setSelectedButton}= props
-  
-  const tags = [
-    {
-      label: "work",
-      id: 0
-    },
-    {
-      label: "Study",
-      id: 1
-    }
-    ,
-    {
-      label: "Environment",
-      id: 2
-    },
-    {
-      label: "Family",
-      id: 3
-    }
-  ]
+  const appContext = useContext(userContext)
+  const selectedButton = appContext.selectedTags;
   console.log(selectedButton)
   return (
     <>
@@ -35,10 +17,11 @@ const Buttons = (props) => {
         <div id={Style["red"]} className={Style["dot"]}><span id={Style["span4"]}></span>Family</div> */}
 
         {
-          tags.map(tag => <div id={Style[`buttonColor-${tag.id}`]} 
-          className={selectedButton.includes(tag.id)?` border ${Style["dot"]}`:`${Style["dot"]}`}
-            onClick={()=>setSelectedButton((e)=>e.includes(tag.id)? e.filter(e=>e!==tag.id):[...e, tag.id])}>
-           <span id={Style[`span${tag.id}`]}></span>{tag.label}</div>
+          appContext.tags.map(tag => <><div id={Style[`buttonColor-${tag.id}`]}
+          className={selectedButton.includes(tag.id) ? ` border ${Style["dot"]}` : `${Style["dot"]}`}
+          onClick={()=>appContext.dispatch({type:"selectTag", data: tag })}
+        >
+          <span id={Style[`span${tag.id}`]}></span>{tag.label}</div></>
           )
         }
 
