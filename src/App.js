@@ -3,14 +3,23 @@ import './App.css';
 import Buttons from './components/Buttons';
 import Navbar from './components/Navbar';
 import Title from './components/Title';
-import { useState } from "react";
+
 import Card from './components/Card';
 import Homepage from './components/Homepage';
 
 
 
 const initialState = {
-  add: false,
+  
+  Open:true,
+  Editclose:false,
+  title:"",
+  Editadd: false,
+  selectTag:false,
+  
+  Todos :[],
+  description:" ",
+  
   tags:  [
     {
       label: "work",
@@ -33,57 +42,77 @@ const initialState = {
   selectedTags:[]
 }
 
-export const userContext = React.createContext();
+export const userContext = React.createContext(initialState);
 
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "add":
-      return {
-        ...state,
-        add: true
-
-      };
-      case 'Editclose':
+    // case "add":
+    //   return{
+    //     ...state,
+    //     add:true
+    //   }
+      
+      // case 'Edit':
+      //   return{
+      //     ...state,
+      //     Editclose:true,
+      //     Editadd: true,
+          
+      //   };
+        case 'Open':
         return{
           ...state,
-          editopen :false,
-          setEdit : false
+          Editadd: true,
+          Editclose:true,
+          selectTag:true
 
+          
+
+          
+          
         };
+        case 'Editclose':
+        return{
+          ...state,
+          Open: false,
+          
+          
+        };
+        
+        case 'Editadd':
+        return{
+          ...state,
+          Editadd: true,
+          
+          
+        };
+        
       case "selectTag":
         return {
           ...state, selectedTags:[...state.selectedTags, action.data]
+
       };
-
-
-
-  }
-
-}
-
-
-
-
-
+      case "title":
+        return{
+          ...state,
+          title: action.data,
+        };
+      case "description":
+        return{
+          ...state,
+          description : action.data,
+        };
+        
+          
+}}
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-
-
-
-  const [todo, setTodo] = useState([]);
-
-  const [title, setTitle] = useState();
-  const [des, setDes] = useState();
+  
 
   return <>
-    <userContext.Provider value={{ ...state, dispatch }}>
-
-      <Homepage />
-      
-      
-
+    <userContext.Provider value={{ state, dispatch }}>
+      <Homepage state ={state} dispatch={dispatch}/>
     </userContext.Provider>
   </>
   // return <>
@@ -95,10 +124,7 @@ function App() {
 
         <div className='app-wrapper'>
           <Navbar/>
-          <Title title={title}
-            setTitle={setTitle}
-            des={des}
-            setDes={setDes}
+          <Title 
           />
           <Buttons/>
 

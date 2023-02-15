@@ -1,10 +1,18 @@
-import React from 'react';
+import React,{useContext} from 'react';
+import { userContext } from '../App';
 import './Card.css';
 import { useState } from 'react';
 import Option from './Option';
 
 const Card = () => {
+  const appContext = useContext(userContext);
+  const{state, dispatch} =appContext
+
   const [option, setOption] = useState(false)
+  
+ 
+
+  
 
 
   // const handleOption=()=>{

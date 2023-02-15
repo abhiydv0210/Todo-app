@@ -1,29 +1,13 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import { userContext } from '../App'; 
-import Buttons from './Buttons';
-import Title from './Title';
 
-function Navbar(props) {
+function Navbar() {
   const appContext = useContext(userContext)
-  function AddTodo(){
-    useContext.dispatch({type :"EditClose"})
-    const input={
-      
-      iscompleted: false
-      
-    }
-    userContext.dispatch({type:"addtodo",data:input})
-    console.log(input);
-  }
+
+  const{state, dispatch} =appContext
+ 
+  // const {setTodo} =props
   
-  
-
-  const {setTodo} =props
-  const cancelHandle = ()=>{
-    userContext.dispatch({type:'Editclose'})
-
-
-  }
   
   
   return (
@@ -31,10 +15,10 @@ function Navbar(props) {
    <div>
     <div className='header row'>
       <div className='col-sm-2'>
-        <button type="button" className="btn btn-light" onClick={cancelHandle}>cancel</button></div>
+        <button type="button" className="btn btn-light" onClick={()=>dispatch({type:"Editclose"})}>cancel</button></div>
       <div className='col-sm-9'></div>
       <div className='col-sm-1'>
-        <button type="button" className="btn btn-secondary" onClick={setTodo}>
+        <button type="button" className="btn btn-secondary" onClick={()=>dispatch({type:"Editadd"})}>
           Add</button></div>
           </div>
           

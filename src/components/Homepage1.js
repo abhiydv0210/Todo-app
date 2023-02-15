@@ -7,10 +7,13 @@ import Title from './Title';
 function Homepage1() {
 
 
-  console.log()
-  const todoContext = useContext(userContext)
+  
+  const appContext  = useContext(userContext)
+  const{state,dispatch}= appContext
 
-  console.log(todoContext)
+
+
+  console.log(appContext)
 
 
 
@@ -20,12 +23,11 @@ function Homepage1() {
 
 
     <div>
-      {todoContext.add && <><div className="container">
+      {appContext.Open && <><div className="container">
 
         <div className='app-wrapper'>
           <Navbar />
-          <Title
-          />
+          <Title/>
 
           <Buttons/>
 
@@ -41,7 +43,7 @@ function Homepage1() {
           <h3>todo</h3>
         </div>
         <div className='row-mb-7'></div>
-        <div className='row-mb-2'  ><h1 onClick={() => todoContext.dispatch({ type: 'add' })}   >+</h1>
+        <div className='row-mb-2'  ><h1 onClick={() => dispatch({ type: 'Open' })}   >+</h1>
         </div>
 
 
