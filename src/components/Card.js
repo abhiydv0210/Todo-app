@@ -4,10 +4,8 @@ import './Card.css';
 import { useState } from 'react';
 import Option from './Option';
 
-const Card = () => {
-  const appContext = useContext(userContext);
-  const{state, dispatch} =appContext
-
+const Card = ({title, description, id, tags}) => {
+ 
   const [option, setOption] = useState(false)
   
  
@@ -29,7 +27,7 @@ const Card = () => {
           <div class="card">
             <div class="card-body">
               <div className='d-flex'>
-                <h5 class="text-bold col-sm-6 ">The First task Title</h5>
+                <h5 class="text-bold col-sm-6 ">{title}</h5>
                 <div className='col-sm-5'></div>
                 <div className='col-sm-1' style={{ position: "relative" }}>
                   <h4 id="d1" onClick={()=> setOption(!option)}>...</h4>
@@ -37,7 +35,7 @@ const Card = () => {
                 </div>
               </div>
 
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text">{description}</p>
               <div className='d-flex'>
                 <div className='yel'>
 

@@ -11,7 +11,7 @@ import Homepage from './components/Homepage';
 
 const initialState = {
   
-  Open:true,
+  Open:false,
   Editclose:false,
   title:"",
   Editadd: false,
@@ -63,19 +63,45 @@ const reducer = (state, action) => {
         case 'Open':
         return{
           ...state,
-          Editadd: true,
-          Editclose:true,
-          selectTag:true
+          Open:true,
+          
+          Editadd: false,
+          Editclose:false,
+          selectTag:false,
+          title:action.data,
+          description:action.data,
 
           
 
           
           
         };
+        case 'Todos':
+        return{
+          ...state,
+          Editclose: false,
+          Open: false,
+          Editadd: true,
+          selectTag:false,
+          Todos :[...state.Todos,{title:state.title,description:state.description}],
+          title:action.data,
+          description:action.data,
+
+          
+
+        }
+        
         case 'Editclose':
         return{
           ...state,
+          Editclose: true,
           Open: false,
+          Editadd: false,
+          
+          selectTag:false,
+          title:action.data,
+          description:action.data,
+          
           
           
         };
@@ -84,6 +110,13 @@ const reducer = (state, action) => {
         return{
           ...state,
           Editadd: true,
+          Editclose: false,
+          Open: false,
+          selectTag:false,
+          title:action.data,
+          description:action.data,
+
+          
           
           
         };
@@ -111,7 +144,7 @@ function App() {
   
 
   return <>
-    <userContext.Provider value={{ state, dispatch }}>
+    <userContext.Provider value={{ ...state, dispatch }}>
       <Homepage state ={state} dispatch={dispatch}/>
     </userContext.Provider>
   </>

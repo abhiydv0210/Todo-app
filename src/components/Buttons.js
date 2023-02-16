@@ -4,8 +4,8 @@ import { userContext } from '../App';
 import Style from '../components/Button.module.css'
 
 const Buttons = (props) => {
-  const appContext = useContext(userContext)
-  const selectedButton = appContext.selectedTags;
+  const setContext = useContext(userContext)
+  const selectedButton = setContext.selectedTags;
   console.log(selectedButton)
   return (
     <>
@@ -17,9 +17,9 @@ const Buttons = (props) => {
         <div id={Style["red"]} className={Style["dot"]}><span id={Style["span4"]}></span>Family</div> */}
 
         {
-          appContext.tags.map(tag => <><div id={Style[`buttonColor-${tag.id}`]}
+          setContext.tags.map(tag => <><div id={Style[`buttonColor-${tag.id}`]}
           className={selectedButton.includes(tag.id) ? ` border ${Style["dot"]}` : `${Style["dot"]}`}
-          onClick={()=>appContext.dispatch({type:"selectTag", data: tag })}
+          onClick={()=>setContext.dispatch({type:"selectTag", data: tag })}
         >
           <span id={Style[`span${tag.id}`]}></span>{tag.label}</div></>
           )
