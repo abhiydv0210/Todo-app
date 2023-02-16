@@ -1,19 +1,21 @@
 import React, { useContext } from 'react';
 import { userContext } from '../App'
 import Buttons from './Buttons';
+import Card from './Card';
 import Navbar from './Navbar';
 import Title from './Title';
+import "./Homepage1.css"
 
 function Homepage1() {
 
 
   
-  const appContext  = useContext(userContext)
-  const{state,dispatch}= appContext
+  const setContext  = useContext(userContext)
+  const{state,dispatch}= setContext
 
 
 
-  console.log(appContext)
+  console.log(setContext)
 
 
 
@@ -23,28 +25,34 @@ function Homepage1() {
 
 
     <div>
-      {appContext.Open && <><div className="container">
+      
+      {setContext.Open && <><div className="container">
 
-        <div className='app-wrapper'>
+        <div className='app-wrapper '>
           <Navbar />
           <Title/>
 
           <Buttons/>
+      
 
         </div>
+        
 
 
       </div>
 
       </>}
 
-      <div className='d-flex justify-content-between align-items-center w-full '>
-        <div className="row-mb-2">
+
+      <div id="row" className='grid text-center '>
+        <div className="g-row-3">
           <h3>todo</h3>
         </div>
-        <div className='row-mb-7'></div>
-        <div className='row-mb-2'  ><h1 onClick={() => dispatch({ type: 'Open' })}   >+</h1>
+        {/* <div className="g-row-6"><Card/></div> */}
+        <div className='g-row-6'>{setContext.Todos.map(todo=><Card key={todo.id} title={todo.title} description={todo.description} />)}</div>
+        <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
+
 
 
       </div>

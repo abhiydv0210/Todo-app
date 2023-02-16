@@ -16,7 +16,7 @@ function Homepage() {
   
   
 
-        <div className='col-sm-3'>
+        <div className='col-sm-3 list '>
         
           
         <button className='mt-4' id='dot-1' ></button>

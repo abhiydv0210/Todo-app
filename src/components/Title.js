@@ -5,8 +5,8 @@ import { userContext } from '../App'
 
 
 const Title = () => {
-  const appContext = useContext(userContext)
-  const{state,dispatch}= appContext
+  const setContext = useContext(userContext)
+  const{state,dispatch}= setContext
 
   
   

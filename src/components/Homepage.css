@@ -42,3 +42,8 @@
     display: flex;
     justify-content: right;
 }
+.list{
+    position:fixed;
+    bottom: 325px;
+    
+}
