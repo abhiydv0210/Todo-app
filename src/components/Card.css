@@ -10,6 +10,7 @@
 }
 .container{
     width: 1000px;
+    /* z-index: -1; */
 }
 #left{
     float: left;
@@ -45,4 +46,12 @@
 }
 .d1{
     position: relative;
+}
+#e1{
+    position: absolute;
+    /* bottom: 50px; */
+    left: -60px;
+    /* bottom: 50px; */
+    z-index: -1;
+    /* visibility: hidden; */
 }
