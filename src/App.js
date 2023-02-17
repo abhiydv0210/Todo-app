@@ -4,7 +4,7 @@ import Buttons from './components/Buttons';
 import Navbar from './components/Navbar';
 import Title from './components/Title';
 
-import Card from './components/Card';
+
 import Homepage from './components/Homepage';
 
 
@@ -19,6 +19,8 @@ const initialState = {
   
   Todos :[],
   description:" ",
+  optionedit:false,
+  optiondelete:false,
   
   tags:  [
     {
@@ -61,6 +63,7 @@ const reducer = (state, action) => {
           
       //   };
         case 'Open':
+          
         return{
           ...state,
           Open:true,
@@ -70,6 +73,9 @@ const reducer = (state, action) => {
           selectTag:false,
           title:action.data,
           description:action.data,
+          Title:'',
+          description:''
+          
 
           
 
@@ -79,13 +85,17 @@ const reducer = (state, action) => {
         case 'Todos':
         return{
           ...state,
-          Editclose: false,
-          Open: false,
-          Editadd: true,
-          selectTag:false,
-          Todos :[...state.Todos,{title:state.title,description:state.description}],
-          title:action.data,
-          description:action.data,
+          // Editclose: false,
+          // Open: false,
+          // Editadd: false,
+          // selectTag:[tags.id],
+
+          // Todos :[ ],
+          Todos:[...state.Todos, {title:state.title,description:state.description}],
+          // Todos:[]
+
+          // title:action.data,
+          // description:action.data,
 
           
 
@@ -107,6 +117,11 @@ const reducer = (state, action) => {
         };
         
         case 'Editadd':
+          let todo = {
+            title: state.title, 
+            description: state.description, 
+            tags: state.selectedTags
+          }
         return{
           ...state,
           Editadd: true,
@@ -115,11 +130,29 @@ const reducer = (state, action) => {
           selectTag:false,
           title:action.data,
           description:action.data,
-
-          
-          
-          
+          Todos:[...state.Todos, todo],
+          title:"",
+          description:"",
+          selectedTags:[] 
         };
+        case 'optionedit':
+          return{
+            ...state,
+            optionedit:true,
+            Editadd: false,
+          Editclose:false,
+          selectTag:false,
+          title:action.data,
+          description:action.data,
+          
+          
+
+          };
+          case 'optiondelete':
+          return{
+            ...state,
+            optiondelete:true
+          };
         
       case "selectTag":
         return {

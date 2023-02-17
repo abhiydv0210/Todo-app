@@ -49,7 +49,7 @@ function Homepage1() {
           <h3>todo</h3>
         </div>
         {/* <div className="g-row-6"><Card/></div> */}
-        <div className='g-row-6'>{setContext.Todos.map(todo=><Card key={todo.id} title={todo.title} description={todo.description} />)}</div>
+        <div className='g-row-6'>{setContext.Todos.map(todo=><div className='row'key={todo.id}><Card  title={todo.title} description={todo.description} /></div>)}</div>
         <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
 
