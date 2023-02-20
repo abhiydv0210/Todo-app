@@ -10,8 +10,15 @@
 }
 .row{
     margin-top: 60px;
-    display: flex;
+    margin-left: 10px;
+    /* display: flex;
     justify-content: space-between;
-     align-content: space-between;
+     align-content: space-between; */
 } 
+.g-row-6{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
 

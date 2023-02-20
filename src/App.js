@@ -18,7 +18,7 @@ const initialState = {
   selectTag:false,
   
   Todos :[],
-  description:" ",
+  description:"",
   optionedit:false,
   optiondelete:false,
   
@@ -138,6 +138,7 @@ const reducer = (state, action) => {
         case 'optionedit':
           return{
             ...state,
+            Open: true,
             optionedit:true,
             Editadd: false,
           Editclose:false,
@@ -148,9 +149,14 @@ const reducer = (state, action) => {
           
 
           };
-          case 'optiondelete':
-          return{
+      case 'optiondelete':
+        console.log(action.id ,"---s")
+            let adel= state.Todos;
+            let arr = adel.filter((item, index)=>index!==action.id)
+          return{ 
             ...state,
+            Todos : arr,
+            Open:false,
             optiondelete:true
           };
         

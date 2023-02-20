@@ -14,7 +14,7 @@ const Title = () => {
     <div className={Style["spacing"]}>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label" >Title</label>
-        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="The first task Title" onChange={(e)=>dispatch({type:"title",data:e.target.value})} />
+        <input type="text"  className="form-control" id="exampleFormControlInput1" placeholder="The first task Title" onChange={(e)=>dispatch({type:"title",data:e.target.value})} />
       </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlTextarea1" className="form-label">Description</label>
