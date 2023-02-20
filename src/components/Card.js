@@ -20,21 +20,21 @@ const Card = ({title, description, id, tags}) => {
 
   return (
 
-        <div  class="col-sm-6 mb-3 mb-sm-0">
-          <div class="card">
-            <div class="card-body">
+        <div  className="col-sm-6 mb-3 mb-sm-0">
+          <div className="card">
+            <div className="card-body">
               <div className='d-flex'>
-                <h5 class="text-bold col-sm-6 ">{title}</h5>
+                <h5 className="text-bold col-sm-6 ">{title}</h5>
                 <div className='col-sm-4'></div>
                 <div className='col-sm-2' style={{ position: "relative" }}>
                   <h4 id="d1" onClick={()=> setOption(!option)}>...</h4>
-                  {option && <Option/>}
+                  {option && <Option  id={id}/>}
                 </div>
               </div>
               
               
 
-              <p class="card-text">{description}</p>
+              <p className="card-text">{description}</p>
               <div className='d-flex'>
                 <div className='yel'>
 
