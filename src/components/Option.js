@@ -11,7 +11,7 @@ const Option = ({id}) => {
       
       
         <div className='e1' style={{ position: "absolute",  zIndex: 11111 }}>
-            <button id="t1"  className='btn btn-light' onClick={()=>dispatch({type:'optionedit'})}>Edit...</button>
+            <button id="t1"  className='btn btn-light' onClick={()=>dispatch({type:'optionedit',id})}>Edit...</button>
             <button id="t2" className='btn btn-light' onClick={()=>dispatch({type:'optiondelete', id})}>Delete</button>
         </div>
         

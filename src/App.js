@@ -16,6 +16,7 @@ const initialState = {
   title:"",
   Editadd: false,
   selectTag:false,
+  updatemenu:false,
   
   Todos :[],
   description:"",
@@ -82,6 +83,24 @@ const reducer = (state, action) => {
           
           
         };
+        case'updatemenu':
+        let upd ={
+          title:state.title,
+          description:state.description}
+          let update=state.Todos.map((item,index)=>{
+            if(index===state.id)
+            item=upd;
+            return item
+          })
+        return{
+          ...state,
+          Editadd: false,
+          Todos:update
+          
+
+          
+          
+        };
         case 'Todos':
         return{
           ...state,
@@ -136,6 +155,10 @@ const reducer = (state, action) => {
           selectedTags:[] 
         };
         case 'optionedit':
+          let edit = state.Todos;
+          let updat =edit.filter((item,index)=>index===action.id);
+          console.log(updat,'===>');
+
           return{
             ...state,
             Open: true,
@@ -143,8 +166,9 @@ const reducer = (state, action) => {
             Editadd: false,
           Editclose:false,
           selectTag:false,
-          title:action.data,
-          description:action.data,
+          title:updat[0].title,
+          description:updat[0].description
+          
           
           
 

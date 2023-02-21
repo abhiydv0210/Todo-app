@@ -24,9 +24,9 @@ function Homepage1() {
   return (
 
 
-    <div>
+    <div >
       
-      {setContext.Open && <><div className="container">
+      {setContext.Open && <><div  className="container">
 
         <div className='app-wrapper '>
           <Navbar />
@@ -40,16 +40,17 @@ function Homepage1() {
 
 
       </div>
+      
 
       </>}
 
 
-      <div id="row" className='grid text-center '>
+      <div id="row" className='grid text-center fix '>
         <div className="g-row-3">
           <h3>todo</h3>
         </div>
         {/* <div className="g-row-6"><Card/></div> */}
-        <div className='g-row-6'>{setContext.Todos.map(todo=><div className='row'key={todo.id}><Card  title={todo.title} description={todo.description} id={todo.id}   /></div>)}</div>
+        <div className='g-row-6'>{setContext.Todos.map((todo, i)=><div key={i} className='row'><Card  title={todo.title} description={todo.description} id={i}   /></div>)}</div>
         <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
 

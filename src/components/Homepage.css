@@ -44,6 +44,64 @@
 }
 .list{
     position:fixed;
-    bottom: 325px;
+    bottom: 350px;
     
+}
+#fcol1{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: blue;
+    margin-right: 5px;
+}
+#fcol2{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color:pink;
+    margin-right: 5px;
+}
+#fcol3{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: saddlebrown;
+    margin-right: 5px;
+}
+#fcol4{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color:lightskyblue;
+    margin-right: 5px;
+}
+#e2{
+    /* display: flex; */
+    /* margin-left: px; */
+    
+}
+#a1{
+    display: flex;
+    padding: 15px;
+}
+#a2{
+    display: flex;
+    padding: 15px;
+}
+
+#a3{
+    display: flex;
+    padding: 15px;
+}
+
+#a4{
+    display: flex;
+    padding: 15px;
+
+}
+#fcol5{
+    margin: 5px;
+}
+#a5{
+    padding: 15px;
 }
