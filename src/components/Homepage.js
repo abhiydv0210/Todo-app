@@ -4,55 +4,48 @@ import "./Homepage.css";
 import Homepage1 from './Homepage1';
 
 function Homepage() {
- 
+
   return (
-    
-      
 
-    
-<div>
-<Homepage1/>
 
-  
-  
 
-        <div className='col-sm-3 list '>
-        
-          
-        <button className='mt-4' id='dot-1' ></button>
-        <label className='ms-1 my-auto'> Work</label>
-        
-      
-      <br/>
-      
-      <button className='mt-4' id='dot-2'></button>
-        <label className='ms-1 my-auto'> Study</label>
-      
-        <br/>
-        
-        <button className='mt-4' id='dot-3'></button>
-        <label className='ms-1 my-auto'> Entertainment</label>
-        
-        <br/>
-        
-        <button className='mt-4' id='dot-4'></button>
-        <label className='ms-1 my-auto'> Family</label>
-        
-        <br/>
-        
-        <input className='mt-5' type='checkbox'/>
+
+    <div>
+      <Homepage1 />
+
+
+
+
+      <div className='col-sm-3 list'>
+        {/* <div id ='e2'> */}
+        <div id='a1'>
+          <div id='fcol1'></div><div>Study</div></div>
+          <div id='a2'>
+        <div id='fcol2'></div><div>Work</div></div>
+        <div id='a3'>
+        <div id='fcol3'></div><div>Entertainmnet</div></div>
+        <div id='a4'>
+        <div id='fcol4'></div><div>Family</div></div>
+        <div id='a5'>
+        <input id='fcol5' className='mt-5' type='checkbox'/>
         <label className='ps-2'>Hide done tasks </label>
-        
         </div>
 
       </div>
-      
-    
-    
-  
-    
-    
-    
+
+
+    </div>
+    // </div>
+
+
+
+
+
+
+
+
+
+
 
   )
 }
