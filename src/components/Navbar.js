@@ -27,13 +27,13 @@ function Navbar({id}) {
         <button type="button" className="btn btn-light" onClick={()=>dispatch({type:"Editclose"})}>cancel</button></div>
       <div className='col-sm-7'></div>
       <div className='col-sm-3'>
-        {setContext.updatemenu ?
+        {setContext.updatebutton ?
         
-        <button type="button" id="wid" className="btn btn-secondary" onClick={()=>dispatch({type:'updatemenu'})}>
+        <button type="button" id="wid" className="btn btn-secondary" onClick={()=>dispatch({type:'updatebutton'})}>
         Update</button>:
         <button type="button" id="wid" className="btn btn-secondary"  onClick={addHandler}>
           Add</button>}
-          {setContext.Editadd && <Card id={id}/>}
+          {/* {setContext.Editadd && <Card id={id}/>} */}
           </div>
           
 

@@ -16,7 +16,7 @@ const initialState = {
   title:"",
   Editadd: false,
   selectTag:false,
-  updatemenu:false,
+  updatebutton:false,
   
   Todos :[],
   description:"",
@@ -83,17 +83,25 @@ const reducer = (state, action) => {
           
           
         };
-        case'updatemenu':
-        let upd ={
-          title:state.title,
-          description:state.description}
-          let update=state.Todos.map((item,index)=>{
-            if(index===state.id)
-            item=upd;
-            return item
-          })
+        case'updatebutton':
+        let add ={
+          title :state.title,
+          description: state.description
+        }
+        
+
+        
+          let update=state.Todos.map((item,index)=>
+             (index===action.id)
+
+            
+            
+
+          )
         return{
           ...state,
+          Todos:update,
+          updatebutton:true,
           Editadd: false,
           Todos:update
           
@@ -155,26 +163,43 @@ const reducer = (state, action) => {
           selectedTags:[] 
         };
         case 'optionedit':
+          // let add ={
+          //   title :state.title,
+          //   description: state.description
+          // }
+          
+
           let edit = state.Todos;
-          let updat =edit.filter((item,index)=>index===action.id);
-          console.log(updat,'===>');
+          
+          let updat = edit.filter((item,index)=>{
+            if(index === action.id)
+             index = edit
+             return index
+             console.log(updat);
+            });
+          // console.log(updat);
+          // state.title = updat[0].title;
+          // state.description = updat[0].description
+         return  {
+          ...state,
+          Todos : updat,
+          Open: true,
+          optionedit:false,
+          Editadd: true,
+        Editclose:false,
+        selectTag:false,
+        title:updat[0].title,
+        description:updat[0].description,
+        // title: '',
+        // description:''
+        
+        
+        
 
-          return{
-            ...state,
-            Open: true,
-            optionedit:true,
-            Editadd: false,
-          Editclose:false,
-          selectTag:false,
-          title:updat[0].title,
-          description:updat[0].description
-          
-          
-          
-
-          };
+        }
+        
       case 'optiondelete':
-        console.log(action.id ,"---s")
+        // console.log(action.id ,"---s")
             let adel= state.Todos;
             let arr = adel.filter((item, index)=>index!==action.id)
           return{ 
@@ -192,12 +217,14 @@ const reducer = (state, action) => {
       case "title":
         return{
           ...state,
-          title: action.data,
+          title: action.id,
+          
         };
       case "description":
         return{
           ...state,
-          description : action.data,
+          description : action.id,
+          
         };
         
           

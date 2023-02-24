@@ -15,12 +15,12 @@ function Homepage1() {
 
 
 
-  console.log(setContext)
+  // console.log(setContext)
 
 
 
 
-
+// console.log(setContext.Todos)
   return (
 
 
@@ -50,7 +50,9 @@ function Homepage1() {
           <h3>todo</h3>
         </div>
         {/* <div className="g-row-6"><Card/></div> */}
-        <div className='g-row-6'>{setContext.Todos.map((todo, i)=><div key={i} className='row'><Card  title={todo.title} description={todo.description} id={i}   /></div>)}</div>
+        <div className='g-row-6'>
+          {setContext.Todos.map((todo, i)=><div key={i} className='row'>
+          <Card title={todo.title} description={todo.description} id={i}   /></div>)}</div>
         <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
 
