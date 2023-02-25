@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 import Title from './Title';
 import "./Homepage1.css"
 
-function Homepage1() {
+function Homepage1({id,title,description}) {
 
 
   
@@ -18,7 +18,7 @@ function Homepage1() {
   // console.log(setContext)
 
 
-
+console.log(id,'Hey i am card');
 
 // console.log(setContext.Todos)
   return (
@@ -29,10 +29,10 @@ function Homepage1() {
       {setContext.Open && <><div  className="container">
 
         <div className='app-wrapper '>
-          <Navbar />
-          <Title/>
+          <Navbar id={id} />
+          <Title id={id} />
 
-          <Buttons/>
+          <Buttons id={id} />
       
 
         </div>
@@ -51,10 +51,12 @@ function Homepage1() {
         </div>
         {/* <div className="g-row-6"><Card/></div> */}
         <div className='g-row-6'>
+          
           {setContext.Todos.map((todo, i)=><div key={i} className='row'>
-          <Card title={todo.title} description={todo.description} id={i}   /></div>)}</div>
-        <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
+          <Card title={todo.title} description={todo.description} id={i}   /></div>)}</div>
+        <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open',id })} >+</h1>
         </div>
+       
 
 
 

@@ -1,28 +1,18 @@
 import React, { useReducer } from 'react';
 import './App.css';
-import Buttons from './components/Buttons';
-import Navbar from './components/Navbar';
-import Title from './components/Title';
-
-
 import Homepage from './components/Homepage';
 
-
-
 const initialState = {
-  
   Open:false,
   Editclose:false,
   title:"",
   Editadd: false,
   selectTag:false,
   updatebutton:false,
-  
   Todos :[],
   description:"",
   optionedit:false,
   optiondelete:false,
-  
   tags:  [
     {
       label: "work",
@@ -50,19 +40,7 @@ export const userContext = React.createContext(initialState);
 
 const reducer = (state, action) => {
   switch (action.type) {
-    // case "add":
-    //   return{
-    //     ...state,
-    //     add:true
-    //   }
-      
-      // case 'Edit':
-      //   return{
-      //     ...state,
-      //     Editclose:true,
-      //     Editadd: true,
-          
-      //   };
+    
         case 'Open':
           
         return{
@@ -76,53 +54,40 @@ const reducer = (state, action) => {
           description:action.data,
           Title:'',
           description:''
-          
-
-          
-
-          
-          
+        
         };
         case'updatebutton':
         let add ={
-          title :state.title,
+          ...state,
+          title : state.title,
           description: state.description
         }
+        console.log(add , "---->s", action.id)
+
+        //array todos -.> index data update 
         
+          let update = state.Todos.filter((item,index)=>{
+             if(index===action.id) 
+             item = add;
+            return item;
 
-        
-          let update=state.Todos.map((item,index)=>
-             (index===action.id)
+            })
 
-            
-            
-
-          )
         return{
           ...state,
-          Todos:update,
           updatebutton:true,
           Editadd: false,
-          Todos:update
-          
-
-          
-          
+          Todos:update,
+          Open: false,
+          optionedit:false
+         
         };
         case 'Todos':
         return{
           ...state,
-          // Editclose: false,
-          // Open: false,
-          // Editadd: false,
-          // selectTag:[tags.id],
-
-          // Todos :[ ],
+          
           Todos:[...state.Todos, {title:state.title,description:state.description}],
-          // Todos:[]
-
-          // title:action.data,
-          // description:action.data,
+          
 
           
 
@@ -174,8 +139,7 @@ const reducer = (state, action) => {
           let updat = edit.filter((item,index)=>{
             if(index === action.id)
              index = edit
-             return index
-             console.log(updat);
+             return index;
             });
           // console.log(updat);
           // state.title = updat[0].title;
@@ -217,13 +181,13 @@ const reducer = (state, action) => {
       case "title":
         return{
           ...state,
-          title: action.id,
+          title: action.data,
           
         };
       case "description":
         return{
           ...state,
-          description : action.id,
+          description : action.data,
           
         };
         
@@ -235,28 +199,11 @@ function App() {
 
   return <>
     <userContext.Provider value={{ ...state, dispatch }}>
-      <Homepage state ={state} dispatch={dispatch}/>
+      <Homepage  state ={state} dispatch={dispatch}/>
     </userContext.Provider>
   </>
-  // return <>
-  // <Card/>
-  // </>
-  return (
-    <userContext.Provider value={{ ...state, dispatch }}>
-      <div className="container">
-
-        <div className='app-wrapper'>
-          <Navbar/>
-          <Title 
-          />
-          <Buttons/>
-
-        </div>
-
-
-      </div>
-    </userContext.Provider>
-  );
+  
+  
 }
 
 export default App;

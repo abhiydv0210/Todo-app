@@ -3,15 +3,11 @@ import React from 'react';
 import "./Homepage.css";
 import Homepage1 from './Homepage1';
 
-function Homepage() {
+function Homepage({id}) {
 
   return (
-
-
-
-
     <div>
-      <Homepage1 />
+      <Homepage1 id={id}/>
 
 
 

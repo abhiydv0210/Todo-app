@@ -16,9 +16,10 @@ function Navbar({id}) {
       return; 
     }
     
-    dispatch({type:"Editadd"}) 
+    dispatch({type:"Editadd",id}) 
   }
-  
+  // console.log(setContext.updatebutton)
+  // console.log(id, 'hey navbar');
   return (
     
    <div>
@@ -27,12 +28,12 @@ function Navbar({id}) {
         <button type="button" className="btn btn-light" onClick={()=>dispatch({type:"Editclose"})}>cancel</button></div>
       <div className='col-sm-7'></div>
       <div className='col-sm-3'>
-        {setContext.updatebutton ?
+        {setContext.Editadd ?(
         
-        <button type="button" id="wid" className="btn btn-secondary" onClick={()=>dispatch({type:'updatebutton'})}>
-        Update</button>:
+        <button type="button"  className="btn btn-secondary" onClick={()=>dispatch({type:'updatebutton',id})}>
+        Update</button>):(
         <button type="button" id="wid" className="btn btn-secondary"  onClick={addHandler}>
-          Add</button>}
+          Add</button>)}
           {/* {setContext.Editadd && <Card id={id}/>} */}
           </div>
           
@@ -46,5 +47,8 @@ function Navbar({id}) {
 
   )
 }
+
+
+
 
 export default Navbar;

@@ -10,7 +10,7 @@ const Card = ({title, description, id, tags}) => {
   
  
 
-  
+  console.log(id, '======>');
 
 
   // const handleOption=()=>{
