@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import './App.css';
-import Homepage from './components/Homepage';
+import Sidebar from './components/Sidebar';
 
 const initialState = {
   Open:false,
@@ -199,7 +199,7 @@ function App() {
 
   return <>
     <userContext.Provider value={{ ...state, dispatch }}>
-      <Homepage  state ={state} dispatch={dispatch}/>
+      <Sidebar  state ={state} dispatch={dispatch}/>
     </userContext.Provider>
   </>
   
