@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { useState, useReducer } from 'react';
-import { userContext } from '../App';
-import Style from '../components/Button.module.css'
 
-const Buttons = ({id}) => {
+import { userContext } from '../App';
+import Style from '../components/Tags.module.css'
+
+const Tags = ({id}) => {
   const setContext = useContext(userContext)
   const selectedButton = setContext.selectedTags;
   // console.log(selectedButton)
@@ -30,4 +30,4 @@ const Buttons = ({id}) => {
   )
 }
 
-export default Buttons
+export default Tags
