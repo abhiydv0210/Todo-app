@@ -5,7 +5,7 @@ import './Navbar.css';
 
 
 
-import Style from '../components/Button.module.css'
+import Style from '../components/Tags.module.css'
 
 function Navbar({ id }) {
   const setContext = useContext(userContext)
@@ -23,9 +23,9 @@ function Navbar({ id }) {
 
     dispatch({ type: "Editadd", id })
   }
-  // console.log(setContext.updatebutton)
-  // console.log(id, 'hey navbar');
+  
   return (
+    <>
 
     <div>
       <div className='header row'>
@@ -35,29 +35,29 @@ function Navbar({ id }) {
         <div className='col-sm-3'>
           {setContext.Editadd ? (
 
-            <button type="button" className="btn btn-secondary" onClick={() => dispatch({ type: 'updatebutton', id })}>
+            <button type="button" className="btn btn-secondary" onClick={() => dispatch({ type: 'updatebutton' })}>
               Update</button>) : (
             <button type="button" id="wid" className="btn btn-secondary" onClick={addHandler}>
               Add</button>)}
           {/* {setContext.Editadd && <Card id={id}/>} */}
+          
+
         </div>
-
-
-
-
-        
-
       </div>
 
     </div>
+    <div className={Style["spacing"]}>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label" >Title</label>
+              <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="The first task Title" value={setContext.title} onChange={(e) => dispatch({ type: "title", id : e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlTextarea1" className="form-label">Description</label>
+              <textarea className="form-control" id="exampleFormControlTextarea1" placeholder='Add Description Here ' rows="4" value={setContext.description} onChange={(e) => dispatch({ type: "description", id : e.target.value })}></textarea>
+            </div>
 
-
-
-
+          </div>
+    </>
   )
 }
-
-
-
-
 export default Navbar;

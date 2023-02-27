@@ -58,28 +58,27 @@ const reducer = (state, action) => {
         };
         case'updatebutton':
         let add ={
-          ...state,
           title : state.title,
           description: state.description
         }
-        console.log(add , "---->s", action.id)
-
+        console.log(add , "---->s")
+        if(typeof state.currentID===undefined)
+        return {...state}
         //array todos -.> index data update 
-        
-          let update = state.Todos.filter((item,index)=>{
-             if(index===action.id) 
-             item = add;
-            return item;
-
-            })
+        state.Todos[state.currentID] = add ; 
+        console.log(state.Todos, "todos")
 
         return{
           ...state,
           updatebutton:true,
           Editadd: false,
-          Todos:update,
+          // Todos:update,
+         // Todos:updated,
+          
           Open: false,
-          optionedit:false
+          optionedit:false,
+        //   title:update[0].title,
+        // description:update[0].description,
          
         };
         case 'Todos':
@@ -135,11 +134,12 @@ const reducer = (state, action) => {
           
 
           let edit = state.Todos;
-          
+          console.log(action, "--->action")
+
           let updat = edit.filter((item,index)=>{
             if(index === action.id)
              index = edit
-             return index;
+             return item;
             });
           // console.log(updat);
           // state.title = updat[0].title;
@@ -148,12 +148,13 @@ const reducer = (state, action) => {
           ...state,
           Todos : updat,
           Open: true,
-          optionedit:false,
+          optionedit:true,
           Editadd: true,
+          updatebutton:true,
         Editclose:false,
-        selectTag:false,
-        title:updat[0].title,
-        description:updat[0].description,
+        currentID: action.id, 
+        title:updat[action.id].title,
+        description:updat[action.id].description,
         // title: '',
         // description:''
         
@@ -181,13 +182,13 @@ const reducer = (state, action) => {
       case "title":
         return{
           ...state,
-          title: action.data,
+          title: action.id,
           
         };
       case "description":
         return{
           ...state,
-          description : action.data,
+          description : action.id,
           
         };
         
