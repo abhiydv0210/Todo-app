@@ -49,12 +49,13 @@ const reducer = (state, action) => {
           
           Editadd: false,
           Editclose:false,
-          selectTag:false,
-          title:action.data,
-          description:action.data,
-          Title:'',
+          selectTag:true,
+          // tags:action.id,
+          title:action.id,
+          description:action.id,
+          title:'',
           description:''
-        
+          
         };
         case'updatebutton':
         let add ={
@@ -72,24 +73,15 @@ const reducer = (state, action) => {
           ...state,
           updatebutton:true,
           Editadd: false,
-          // Todos:update,
-         // Todos:updated,
-          
           Open: false,
           optionedit:false,
-        //   title:update[0].title,
-        // description:update[0].description,
-         
+        
         };
         case 'Todos':
         return{
           ...state,
           
           Todos:[...state.Todos, {title:state.title,description:state.description}],
-          
-
-          
-
         }
         
         case 'Editclose':
@@ -102,16 +94,13 @@ const reducer = (state, action) => {
           selectTag:false,
           title:action.data,
           description:action.data,
-          
-          
-          
         };
         
         case 'Editadd':
           let todo = {
             title: state.title, 
             description: state.description, 
-            tags: state.selectedTags
+            tags: state.tags
           }
         return{
           ...state,
@@ -119,20 +108,17 @@ const reducer = (state, action) => {
           Editclose: false,
           Open: false,
           selectTag:false,
+          // tags:action.data,
           title:action.data,
           description:action.data,
           Todos:[...state.Todos, todo],
+          // selectTag:[...state.selectedTags, action.data],
           title:"",
           description:"",
           selectedTags:[] 
         };
         case 'optionedit':
-          // let add ={
-          //   title :state.title,
-          //   description: state.description
-          // }
           
-
           let edit = state.Todos;
           console.log(action, "--->action")
 
@@ -141,9 +127,7 @@ const reducer = (state, action) => {
              index = edit
              return item;
             });
-          // console.log(updat);
-          // state.title = updat[0].title;
-          // state.description = updat[0].description
+          
          return  {
           ...state,
           Todos : updat,
@@ -155,12 +139,7 @@ const reducer = (state, action) => {
         currentID: action.id, 
         title:updat[action.id].title,
         description:updat[action.id].description,
-        // title: '',
-        // description:''
         
-        
-        
-
         }
         
       case 'optiondelete':
@@ -175,10 +154,28 @@ const reducer = (state, action) => {
           };
         
       case "selectTag":
-        return {
-          ...state, selectedTags:[...state.selectedTags, action.data]
+        // console.log(action.data, "--->")
+        // let data = [action.data]; 
+       const filter =  state.tags.filter((item)=>item.id===action.id);
+        //[1,2,]
+        const current =  state.update.filter((item)=>item.id===action.id);
 
+        let update = [...state.update, ...filter];
+      
+       if(current.length>0){
+        update = update.filter(item=>item.id!==action.id);
+       }
+      //  console.log(data,"===")
+        return {
+      ...state,
+      filter,
+      update
       };
+      case 'tags':
+        return{
+          ...state,
+          tags:action.id
+        }
       case "title":
         return{
           ...state,
@@ -192,19 +189,13 @@ const reducer = (state, action) => {
           
         };
         
-          
 }}
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
-  
-
   return <>
     <userContext.Provider value={{ ...state, dispatch }}>
       <Sidebar  state ={state} dispatch={dispatch}/>
     </userContext.Provider>
   </>
-  
-  
 }
-
 export default App;
