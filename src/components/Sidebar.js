@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { userContext } from '../App'
 import Tags from './Tags';
 import Card from './Card';
@@ -10,6 +10,7 @@ import "./Sidebar.css"
 
 function Sidebar() {
   const setContext = useContext(userContext)
+  const [option, setOption] = useState(-1)
   const { dispatch } = setContext
 
 
@@ -33,7 +34,7 @@ function Sidebar() {
         <div className='g-row-6'>
 
           {setContext.Todos.map((todo, i) => <div key={i} className='row'>
-            <Card title={todo.title} description={todo.description} id={i} /></div>)}</div>
+            <Card title={todo.title} description={todo.description} id={i} option={option} setOption={setOption}/></div>)}</div>
         <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
 
