@@ -13,6 +13,7 @@ const initialState = {
   description:"",
   optionedit:false,
   optiondelete:false,
+  selectedTagIds:[],
   tags:  [
     {
       label: "work",
@@ -154,22 +155,34 @@ const reducer = (state, action) => {
           };
         
       case "selectTag":
-        // console.log(action.data, "--->")
-        // let data = [action.data]; 
-       const filter =  state.tags.filter((item)=>item.id===action.id);
-        //[1,2,]
-        const current =  state.update.filter((item)=>item.id===action.id);
-
-        let update = [...state.update, ...filter];
-      
-       if(current.length>0){
-        update = update.filter(item=>item.id!==action.id);
-       }
-      //  console.log(data,"===")
+        console.log(action.data, "--->")
+        
+      // let data = [action.data];
+  // 
+         let tags = [...state.selectedTags];
+         const filterTags = state.selectedTags.filter((item)=>item.id===action.data.id)
+         if(filterTags.length>0){
+          //if there's already tag exists remove it
+          const filterdTags = state.selectedTags.filter((item)=>item.id!==action.data.id)
+          tags= filterdTags; 
+         }else{
+          tags.push(action.data);
+         }
+          let tagID = [...state.selectedTags]
+          const filterTagID = state.selectedTags.filter((item)=>item.id===action.data.id)
+         if(filterTagID.length>0){
+          const filterdTagID = state.selectedTags.filter((item)=>item.id!==action.data.id)
+          tagID= filterdTagID; 
+         }else{
+          tagID.push(action.data.id);
+         }
+          
         return {
       ...state,
-      filter,
-      update
+      selectedTags :tags,
+      selectedTagIds:tagID,
+     
+     
       };
       case 'tags':
         return{
