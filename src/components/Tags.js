@@ -6,7 +6,7 @@ import Style from '../components/Tags.module.css'
 const Tags = () => {
   const setContext = useContext(userContext)
   const selectedButton = setContext.selectedTags;
-  console.log(selectedButton)
+  console.log(setContext.selectedTags, '+++.')
 
   return (
     <>
@@ -16,10 +16,10 @@ const Tags = () => {
         <div id={Style["green"]} className={Style["dot"]}><span id={Style["span2"]}></span>Study</div>
         <div id={Style["blue"]} className={Style["dot"]}><span id={Style["span3"]}></span>Environment</div>
         <div id={Style["red"]} className={Style["dot"]}><span id={Style["span4"]}></span>Family</div> */}
-
+      
         {
           setContext.tags.map(tag => <><div id={Style[`buttonColor-${tag.id}`]}
-          className={selectedButton.includes(tag.id) ? ` border ${Style["dot"]}` : `${Style["dot"]}`}
+          className={setContext.selectedTagIds.includes(tag.id) ? ` border ${Style["dot"]}` : `${Style["dot"]}`}
           onClick={()=>setContext.dispatch({type:"selectTag", data: tag })}
         >
           <span id={Style[`span${tag.id}`]}></span>{tag.label}</div></>
