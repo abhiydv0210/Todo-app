@@ -16,7 +16,7 @@ const initialState = {
   selectedTagIds:[],
   tags:  [
     {
-      label: "work",
+      label: "Work",
       id: 0
     },
     {
@@ -50,10 +50,11 @@ const reducer = (state, action) => {
           
           Editadd: false,
           Editclose:false,
-          selectTag:true,
+          selectTag:false,
           // tags:action.id,
-          title:action.id,
-          description:action.id,
+          // title:action.id,
+          // description:action.id,
+          selectedTags:[],
           title:'',
           description:''
           
@@ -82,7 +83,7 @@ const reducer = (state, action) => {
         return{
           ...state,
           
-          Todos:[...state.Todos, {title:state.title,description:state.description}],
+          Todos:[...state.Todos, {title:state.title,description:state.description,selectedTags:[state.selectedTags]}],
         }
         
         case 'Editclose':
@@ -101,19 +102,20 @@ const reducer = (state, action) => {
           let todo = {
             title: state.title, 
             description: state.description, 
-            tags: state.tags
+            selectedTags:state.selectedTags
           }
         return{
           ...state,
           Editadd: true,
           Editclose: false,
           Open: false,
-          selectTag:false,
+          // selectTag:false,
           // tags:action.data,
+          selectTag:false,
           title:action.data,
           description:action.data,
           Todos:[...state.Todos, todo],
-          // selectTag:[...state.selectedTags, action.data],
+          selectedTags:[...state.selectedTags,action],
           title:"",
           description:"",
           selectedTags:[] 
@@ -168,19 +170,24 @@ const reducer = (state, action) => {
          }else{
           tags.push(action.data);
          }
-          let tagID = [...state.selectedTags]
-          const filterTagID = state.selectedTags.filter((item)=>item.id===action.data.id)
-         if(filterTagID.length>0){
-          const filterdTagID = state.selectedTags.filter((item)=>item.id!==action.data.id)
+          let tagID = [...state.selectedTagIds]
+          const filterTagID = state.selectedTagIds.filter((tagID)=>tagID===action.data.id)
+         if(filterTagID.length >0){
+          const filterdTagID = state.selectedTagIds.filter((tagID)=>tagID!==action.data.id)
           tagID= filterdTagID; 
          }else{
           tagID.push(action.data.id);
          }
+        //  let Todos =[...state.Todos]
+
+        //  Todos.push(action.data)
           
         return {
       ...state,
       selectedTags :tags,
       selectedTagIds:tagID,
+      
+      
      
      
       };
