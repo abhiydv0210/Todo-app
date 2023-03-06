@@ -5,7 +5,7 @@ import './Option.css';
 
 const Option = ({id}) => {
     const setContext =useContext(userContext)
-    const{state,dispatch} =setContext
+    const{dispatch} =setContext
     console.log(id,"hey i m option")
     return (
         <div className='e2' >

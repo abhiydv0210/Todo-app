@@ -4,11 +4,11 @@ import './Card.css';
 import { useState } from 'react';
 import Option from './Option';
 
-const Card = ({ title, description, id, tags, setOption, option }) => {
+const Card = ({ title, description, id, tags, setOption, option,Hidedonetask }) => {
 
+  const setContext = useContext(userContext)
 
-
-
+  const { dispatch } = setContext
 
   console.log(id, 'i m a card');
 
@@ -24,13 +24,13 @@ console.log(tags,'im a tag');
   }
   return (
 
-    // <div className="col-sm-6  ">
+    <div className="tag  ">
       <div className="card">
         <div className="card-body">
           <div className='d-flex'>
             <h5 className="text-bold col-sm-4">{title}</h5>
-            <div className='col-sm-7'></div>
-            <div className='col-sm-1' style={{ position: "relative" }}>
+            <div className='col-sm-6'></div>
+            <div className='col-sm-2' style={{ position: "relative" }}>
               <h4 id="d1" onClick={()=>clickHandler(id)}>...</h4>
               {option===id &&<Option id={id} />}
             </div>
@@ -42,9 +42,9 @@ console.log(tags,'im a tag');
 
 
           <div className='d-flex'>
-            <div className='col-sm-4'>
+            <div id="tags" className='col-sm-4'>
              
-            {tags.map(tag=><div key={tag.id}>{tag.label}</div>)}
+            {tags.map(tag=><div key={tag.id} className={`tag${tag.id}`}></div>)}
            
             </div>
            
@@ -59,12 +59,12 @@ console.log(tags,'im a tag');
 
 
             <div className='col-sm-4'>
-              <input id="m1" type="checkbox" /><label className="ms-1">Done</label>
+              <input id="m1" type="checkbox" onClick={() => dispatch({ type: 'Hidedonetask' })} /><label className="ms-1" >Done</label>
             </div>
           </div>
         </div>
       </div>
-    // </div>
+    </div>
 
   )
 }

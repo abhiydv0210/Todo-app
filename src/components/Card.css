@@ -1,6 +1,14 @@
 .card{
-    background-color: lightyellow;
-    width : 500px
+
+    background-color: rgb(205, 205, 128);
+    width : 400px;
+    position: relative;
+    z-index: -1000px;
+    margin-left: 15px;
+    /* display: flex;
+    align-content: space-around; */
+
+    
 }
 #btn{
     display: flex;
@@ -8,10 +16,10 @@
     justify-content: flex-end;
 
 }
-.container{
+/* .container{
     width: 1000px;
-    /* z-index: -1; */
-}
+    z-index: -1000px;
+} */
 #left{
     float: left;
 
@@ -38,24 +46,61 @@
     margin-right: 5px;
 }
 #m1{
-    margin: 3px;
+    margin: 5px;
 }
 .yel{
     display: flex;
     justify-content: right;
 }
 .d1{
-    position: relative;
+    /* position: relative; */
 }
 #e1{
-    position: absolute;
+    /* position: absolute; */
     /* bottom: 50px; */
     left: -60px;
     /* bottom: 50px; */
     z-index: -1;
     /* visibility: hidden; */
 }
-/*  */
-/* .d-flex{
+.tag0{
+    height: 40%;
+    width: 10%;
+    padding: 10px;
+    margin: 5px;
+    background-color:rgba(34, 212, 81, 0.868);
+    border-radius: 100%;
+
+  }
+  .tag1{
+    height: 40%;
+    width: 10%;
+    padding: 10px;
+    margin: 5px;
+    background-color:rgb(224, 64, 219);
+    border-radius: 100%;
+
+  }
+  .tag2{
+    height: 40%;
+    width: 10%;
+    padding: 10px;
+    margin: 5px;
+    background-color:rgb(224, 64, 64);
+    border-radius: 100%;
+
+  }
+  .tag3{
+    height: 40%;
+    width: 10%;
+    padding: 10px;
+    margin: 5px;
+    background-color:rgb(224, 160, 64);
+    border-radius: 100%;
+    
+
+  }
+  #tags{
     display: flex;
-} */
+  }
+  
