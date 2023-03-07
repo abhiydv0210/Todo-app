@@ -43,7 +43,8 @@ function Navbar({ id }) {
           
 
         </div>
-      </div>
+        </div>
+      
 
     </div>
     <div className={Style["spacing"]}>
@@ -57,6 +58,7 @@ function Navbar({ id }) {
             </div>
 
           </div>
+          
     </>
   )
 }

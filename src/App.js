@@ -219,6 +219,9 @@ const reducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   return <>
+  <div className="row">
+    <div className="col"></div><div className="col"></div>
+  </div>
     <userContext.Provider value={{ ...state, dispatch }}>
       <Sidebar state={state} dispatch={dispatch} />
     </userContext.Provider>
