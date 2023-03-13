@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { userContext } from '../App';
-import Card from './Card';
+
 import './Navbar.css';
 
 

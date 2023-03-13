@@ -16,10 +16,10 @@ function Sidebar() {
 
 
   return (
-    <div id='openn'>
-      {setContext.Open && <><div className="container">
+     <div>
+      {setContext.Open && <><div className="container z-1 position-fixed ">
 
-        <div className='app-wrapper '>
+        <div className='app-wrapper z-1 position-fixed'>
           <Navbar />
           <Tags />
         </div>
@@ -57,9 +57,10 @@ function Sidebar() {
         </div>
 
       </div>
+      </div>
 
 
-    </div>
+    
 
   )
 }
