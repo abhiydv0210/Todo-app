@@ -1,20 +1,20 @@
 #row{
     display: flex;
     justify-content: space-between; 
-    
-    /* position: relative; */
+    /* top: 200px; */
+    /* padding: 10px; */
+    position: relative;
     margin: 15px;
+    margin-bottom: 200px;
     z-index: 1000px;
-    /* bottom: 900px; */
-    
-    
+    /* bottom: 900px;     */
 }
 .container{
     /* position: fixed; */
-    position:relative;
-    left: 10px;
+    /* position:relative; */
+    left: 100px;
     /* top: 300px; */
-    /* background-color: ; */
+    
     
     z-index: 1000px;
 }
@@ -154,9 +154,9 @@
     position: absolute;
     z-index: +111111;
 } */
-@media (min-width:700px)and(max-width:1400px){
+/* @media (min-width:700px)and(max-width:1400px){
     .container{
         display: block ;
     }
-}
+} */
 

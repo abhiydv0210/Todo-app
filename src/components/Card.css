@@ -2,8 +2,8 @@
 
     background-color: rgb(205, 205, 128);
     width : 400px;
-    position: relative;
-    z-index: -1000px;
+    /* position: relative; */
+    z-index: 10px;
     margin-left: 15px;
     /* display: flex;
     align-content: space-around; */
