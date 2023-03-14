@@ -8,11 +8,11 @@
 .container{
     /* position: fixed; */
     position:relative;
-    left: 100px;
+    left: 10px;
     /* top: 300px; */
     
     
-    z-index: 1000px;
+    z-index: 1111;
 }
 .row{
     

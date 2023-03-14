@@ -15,6 +15,9 @@ const initialState = {
   optiondelete: false,
   selectedTagIds: [],
   Donetask: false,
+  HideDonetask: false,
+
+
   tags: [
     {
       label: "Work",
@@ -51,6 +54,7 @@ const reducer = (state, action) => {
         Editadd: false,
         Editclose: false,
         selectedTags: [],
+        isDone: false,
         title: '',
         description: '',
         selectedTagIds: [],
@@ -61,7 +65,8 @@ const reducer = (state, action) => {
         title: state.title,
         description: state.description,
         selectedTags: state.selectedTags,
-        isDone:false 
+        isDone: false
+
       }
       console.log(add, "---->s")
       if (typeof state.currentID === undefined)
@@ -81,8 +86,9 @@ const reducer = (state, action) => {
     case 'Todos':
       return {
         ...state,
+        isDone: false,
 
-        Todos: [...state.Todos, { title: state.title, description: state.description, selectedTags: state.selectedTags }],
+        Todos: [...state.Todos, { title: state.title, description: state.description, selectedTags: [state.selectedTags] }],
       }
 
     case 'Editclose':
@@ -94,21 +100,22 @@ const reducer = (state, action) => {
         // selectTag: false,
         title: action.data,
         description: action.data,
-        selectedTags: [action.id]
+        // selectedTags: [action.id]
       };
 
     case 'Editadd':
       let todo = {
         title: state.title,
         description: state.description,
-        selectedTags: state.selectedTags
+        selectedTags: state.selectedTags,
+        isDone: false
       }
       return {
         ...state,
         Editadd: true,
         Editclose: false,
         Open: false,
-        isDone:false ,
+        isDone: false,
         title: action.data,
         description: action.data,
         Todos: [...state.Todos, todo],
@@ -137,11 +144,11 @@ const reducer = (state, action) => {
         updatebutton: true,
         Editclose: false,
         currentID: action.id,
-        selectedTags: [updat[action.id].selectedTags],
+        selectedTags: updat[action.id].selectedTags,
         // selectedTagIds: updat[action.id].selectedTagIds,
         title: updat[action.id].title,
         description: updat[action.id].description,
-        
+
       }
 
     case 'optiondelete':
@@ -156,7 +163,7 @@ const reducer = (state, action) => {
       };
 
     case "selectTag":
-      console.log(action.data, "--->")
+      // console.log(action.data, "--->")
 
       let tags = [...state.selectedTags];
       const filterTags = state.selectedTags.filter((item) => item.id === action.data)
@@ -184,20 +191,25 @@ const reducer = (state, action) => {
       };
     case 'Donetask':
       let hide = state.Todos;
-      hide[action.id]={
-        ...hide[action.id],
-        isDone:true
-      }
-    //  [action.id] => isDone = true 
+      console.log(action, 'action')
+      hide[action.id] = { ...hide[action.id], isDone: !action.isDone }
+      console.log(hide, '======>');
+      //  [action.id] => isDone = true 
       return {
-
         ...state,
-        Todos:hide,
-        Donetask:true
-        
-        
-
+        Todos: hide,
+        Donetask: true
       };
+    case 'HideDonetask':
+      let task = state.Todos;
+      console.log(action, 'action')
+      task[action.id] = { ...task[action.id], Hidedone: !action.Hidedone }
+
+      return {
+        Todos: task,
+        ...state,
+        HideDonetask: true
+      }
     case 'tags':
       return {
         ...state,
@@ -221,7 +233,7 @@ const reducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   return <>
-  
+
     <userContext.Provider value={{ ...state, dispatch }}>
       <Sidebar state={state} dispatch={dispatch} />
     </userContext.Provider>

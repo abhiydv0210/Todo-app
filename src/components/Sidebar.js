@@ -8,18 +8,18 @@ import "./Sidebar.css"
 
 
 
-function Sidebar() {
+function Sidebar(Hidedone, id) {
   const setContext = useContext(userContext)
   const [option, setOption] = useState(-1)
   const { dispatch } = setContext
-//  console.log(setContext.Todos,"=====")
+ console.log(setContext.Todos,"=====")
 
 
   return (
      <div>
-      {setContext.Open && <><div className="container z-1 position-fixed ">
+      {setContext.Open && <><div className="container   ">
 
-        <div className='app-wrapper z-1 position-fixed'>
+        <div className='app-wrapper '>
           <Navbar />
           <Tags />
         </div>
@@ -35,8 +35,8 @@ function Sidebar() {
         <div className='g-row-6'>
 
           {setContext.Todos.map((todo, i) => <div key={i} className='row'>
-            <Card  Hidedonetask={todo.Hidedonetask} tags={todo.selectedTags}  title={todo.title} description={todo.description}  id={i} option={option} setOption={setOption}/></div>)}</div>
-        <div className='g-row-3'  ><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
+            <Card Hidedone={todo.Hidedone}  isDone={todo.isDone}  tags={todo.selectedTags}  title={todo.title} description={todo.description}  id={i} option={option} setOption={setOption}/></div>)}</div>
+        <div className='g-row-3'><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
 
       </div>
@@ -52,7 +52,7 @@ function Sidebar() {
         <div id='a4'>
           <div id='fcol4'></div><div>Family</div></div>
         <div id='a5'>
-          <input id='fcol5' className='mt-5' type='checkbox' />
+          <input id='fcol5' className='mt-5' type='checkbox' onClick={() => dispatch({ type: 'HideDonetask',id,Hidedone })} />
           <label className='ps-2'>Hide done tasks </label>
         </div>
 
