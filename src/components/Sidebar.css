@@ -9,9 +9,6 @@
     /* position: fixed; */
     position:relative;
     left: 10px;
-    /* top: 300px; */
-    
-    
     z-index: 1111;
 }
 .row{
@@ -84,7 +81,7 @@
 }
 .list{
     position:fixed;
-    bottom: 365px;
+    bottom: 330px;
     
 }
 #fcol1{
@@ -140,8 +137,21 @@
 }
 #a5{
     padding: 10px;
-    top: 50px;
+    top: 30px;
 }
+#ton{
+    position: fixed;
+    bottom: 280px;
+    width: 120px;
+    
+
+}
+.tonn{
+    width: 100px;
+    padding: 20px;
+
+}
+
 /* .app-wrapper{
     position: absolute;
     z-index: +111111;

@@ -5,6 +5,7 @@ import Card from './Card';
 import Navbar from './Navbar';
 
 import "./Sidebar.css"
+import LoginPage from './ LoginPage';
 
 
 
@@ -12,11 +13,11 @@ function Sidebar(Hidedone, id) {
   const setContext = useContext(userContext)
   const [option, setOption] = useState(-1)
   const { dispatch } = setContext
- console.log(setContext.Todos,"=====")
+  console.log(setContext.Todos, "=====")
 
 
   return (
-     <div>
+    <div>
       {setContext.Open && <><div className="container   ">
 
         <div className='app-wrapper '>
@@ -34,10 +35,16 @@ function Sidebar(Hidedone, id) {
         {/* <div className="g-row-6"><Card/></div> */}
         <div className='g-row-6'>
 
-          {setContext.Todos.map((todo, i) => <div key={i} className='row'>
-            <Card Hidedone={todo.Hidedone}  isDone={todo.isDone}  tags={todo.selectedTags}  title={todo.title} description={todo.description}  id={i} option={option} setOption={setOption}/></div>)}</div>
+          {setContext.Todos.map((todo, i) => {
+            return (todo.isDone && setContext.HideDonetask) ? <></> :
+              <div key={i} className='row'>
+                <Card isDone={todo.isDone} tags={todo.selectedTags} title={todo.title} description={todo.description} id={i} option={option} setOption={setOption} /></div>
+          })}</div>
+
+
         <div className='g-row-3'><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
+
 
       </div>
 
@@ -52,15 +59,23 @@ function Sidebar(Hidedone, id) {
         <div id='a4'>
           <div id='fcol4'></div><div>Family</div></div>
         <div id='a5'>
-          <input id='fcol5' className='mt-5' type='checkbox' onClick={() => dispatch({ type: 'HideDonetask',id,Hidedone })} />
-          <label className='ps-2'>Hide done tasks </label>
+          <input id='fcol5' className='mt-5' type='checkbox' onClick={() => dispatch({ type: 'HideDonetask', id, Hidedone })} />
+          <label className='ps-2'>Hide Done tasks </label>
+          <div className='tonn'>
+          <button id='ton' type="button" class="btn btn-danger">Login</button>
+          
+          </div>
+          
         </div>
-
+        
+        <LoginPage/>
       </div>
-      </div>
+      
+      
+    </div>
 
 
-    
+
 
   )
 }

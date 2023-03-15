@@ -144,8 +144,8 @@ const reducer = (state, action) => {
         updatebutton: true,
         Editclose: false,
         currentID: action.id,
+        // tagID: updat[action.id].selectedTagIds,
         selectedTags: updat[action.id].selectedTags,
-        // selectedTagIds: updat[action.id].selectedTagIds,
         title: updat[action.id].title,
         description: updat[action.id].description,
 
@@ -191,9 +191,9 @@ const reducer = (state, action) => {
       };
     case 'Donetask':
       let hide = state.Todos;
-      console.log(action, 'action')
+      // console.log(action, 'action')
       hide[action.id] = { ...hide[action.id], isDone: !action.isDone }
-      console.log(hide, '======>');
+      // console.log(hide, '======>');
       //  [action.id] => isDone = true 
       return {
         ...state,
@@ -201,14 +201,13 @@ const reducer = (state, action) => {
         Donetask: true
       };
     case 'HideDonetask':
-      let task = state.Todos;
-      console.log(action, 'action')
-      task[action.id] = { ...task[action.id], Hidedone: !action.Hidedone }
+      // let task = state.Todos;
+      // console.log(action, 'action')
+      // task[action.id] = { ...task[action.id], Hidedone: !action.Hidedone }
 
       return {
-        Todos: task,
         ...state,
-        HideDonetask: true
+        HideDonetask:!state.HideDonetask
       }
     case 'tags':
       return {

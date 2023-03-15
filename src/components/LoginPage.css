@@ -1,0 +1,27 @@
+#wid{
+    width: 310px;
+}
+#dis{
+    display: flex;
+    justify-content: space-between;
+}
+#back{
+    color: brown;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#acc{
+    text-align: center;
+}
+#sign{
+    text-align: center;
+    color: brown;
+}
+#main{
+    margin: 10px;
+    position: relative;
+    top: 150px;
+    left: 200px;
+
+}

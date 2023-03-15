@@ -19,7 +19,7 @@ const Card = ({ title, description, id, tags, setOption, option,isDone}) => {
   return (
     <>
     
-    <div>
+    <div className='fit'>
     <div className="tag  ">
       <div className="card">
         <div className="card-body">
