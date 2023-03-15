@@ -6,7 +6,7 @@ import Style from '../components/Tags.module.css'
 const Tags = () => {
   const setContext = useContext(userContext)
   const selectedButton = setContext.selectedTags;
-  console.log(setContext.selectedTags, '+++.')
+  // console.log(setContext.selectedTags, '+++.')
 
   return (
     <>

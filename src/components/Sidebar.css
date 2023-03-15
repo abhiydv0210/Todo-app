@@ -1,22 +1,15 @@
 #row{
     display: flex;
-    justify-content: space-between; 
-    /* top: 200px; */
-    /* padding: 10px; */
-    position: relative;
+    justify-content: space-between;
     margin: 15px;
-    margin-bottom: 200px;
     z-index: 1000px;
-    /* bottom: 900px;     */
+    
 }
 .container{
     /* position: fixed; */
-    /* position:relative; */
-    left: 100px;
-    /* top: 300px; */
-    
-    
-    z-index: 1000px;
+    position:relative;
+    left: 10px;
+    z-index: 1111;
 }
 .row{
     
@@ -88,7 +81,7 @@
 }
 .list{
     position:fixed;
-    bottom: 350px;
+    bottom: 330px;
     
 }
 #fcol1{
@@ -119,11 +112,7 @@
     background-color:rgb(224, 160, 64);
     margin-right: 5px;
 }
-#e2{
-    /* display: flex; */
-    /* margin-left: px; */
-    
-}
+
 #a1{
     display: flex;
     padding: 15px;
@@ -148,8 +137,21 @@
 }
 #a5{
     padding: 10px;
-    top: 50px;
+    top: 30px;
 }
+#ton{
+    position: fixed;
+    bottom: 280px;
+    width: 120px;
+    
+
+}
+.tonn{
+    width: 100px;
+    padding: 20px;
+
+}
+
 /* .app-wrapper{
     position: absolute;
     z-index: +111111;
