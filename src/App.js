@@ -16,6 +16,13 @@ const initialState = {
   selectedTagIds: [],
   Donetask: false,
   HideDonetask: false,
+  Loginpage: false,
+  Loginclose:false,
+  Signupopen: false,
+  Signupclose:false,
+  Forgetpassword:false,
+  Forgetclose:false,
+  Signuplogin:false,
 
 
   tags: [
@@ -226,6 +233,63 @@ const reducer = (state, action) => {
         description: action.id,
 
       };
+      case 'Loginpage':
+        return{
+          ...state,
+          Loginpage :true
+        }
+        case 'Loginclose':
+        return{
+          ...state,
+          Loginclose:true,
+          Loginpage :false,
+          Signuplogin:false
+        }
+        case 'Signupopen':
+        return{
+          ...state,
+          Signupopen:true,
+          Loginpage:false
+          
+        }
+        case 'Signupclose':
+        return{
+          ...state,
+          Signupclose:true,
+          Signupopen:false
+          
+        }
+        case 'Forgetpassword':
+        return{
+          ...state,
+          Forgetpassword:true,
+          Signupopen:false,
+          Loginpage:false,
+          Signuplogin:false
+          
+        }
+        case 'Forgetclose':
+        return{
+          ...state,
+          Forgetclose:true,
+          Forgetpassword:false
+          
+        }
+        case 'Signuplogin':
+        return{
+          ...state,
+          Signuplogin:true,
+          Forgetpassword:false,
+          Signupopen:false,
+          
+          
+        }
+        // case'Signupclose':
+        // return{
+        //   ...state,
+        //   Loginclose:true
+        // }
+
 
   }
 }
@@ -234,7 +298,9 @@ function App() {
   return <>
 
     <userContext.Provider value={{ ...state, dispatch }}>
+      <div className='mainDiv'>
       <Sidebar state={state} dispatch={dispatch} />
+      </div>
     </userContext.Provider>
   </>
 }

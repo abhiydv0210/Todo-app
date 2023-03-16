@@ -1,5 +1,6 @@
 #wid{
     width: 310px;
+
 }
 #dis{
     display: flex;
@@ -22,6 +23,24 @@
     margin: 10px;
     position: relative;
     top: 150px;
-    left: 200px;
+    left: 450px;
 
+}
+#mult{
+    color: grey;
+    cursor: pointer;
+}
+#mult:hover{
+    color:brown;
+    
+}
+.app-wrappe{
+    min-width: 350px;
+  min-height: 300px;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 2;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px #000;
 }

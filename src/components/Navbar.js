@@ -37,7 +37,7 @@ function Navbar({ id }) {
 
             <button type="button" className="btn btn-secondary" onClick={() => dispatch({ type: 'updatebutton' })}>
               Update</button>) : (
-            <button type="button" id="wid" className="btn btn-secondary" onClick={addHandler}>
+            <button type="button" id="widi" className="btn btn-secondary" onClick={addHandler}>
               Add</button>)}
           {/* {setContext.Editadd && <Card id={id}/>} */}
           
