@@ -6,6 +6,8 @@ import Navbar from './Navbar';
 
 import "./Sidebar.css"
 import LoginPage from './ LoginPage';
+import SignUp from './SignUp';
+import Password from './Password';
 
 
 
@@ -17,7 +19,8 @@ function Sidebar(Hidedone, id) {
 
 
   return (
-    <div>
+    <div className='back'>
+    <div >
       {setContext.Open && <><div className="container   ">
 
         <div className='app-wrapper '>
@@ -55,23 +58,43 @@ function Sidebar(Hidedone, id) {
         <div id='a2'>
           <div id='fcol2'></div><div>Work</div></div>
         <div id='a3'>
-          <div id='fcol3'></div><div>Entertainmnet</div></div>
+          <div id='fcol3'></div><div>Environment</div></div>
         <div id='a4'>
           <div id='fcol4'></div><div>Family</div></div>
         <div id='a5'>
           <input id='fcol5' className='mt-5' type='checkbox' onClick={() => dispatch({ type: 'HideDonetask', id, Hidedone })} />
           <label className='ps-2'>Hide Done tasks </label>
+          
           <div className='tonn'>
-          <button id='ton' type="button" class="btn btn-danger">Login</button>
+          {setContext.Loginpage ? (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Logout'})}>Logout</button>)
+          :(<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Loginpage'})}>Login</button>)
+            
+          
+          }
+
           
           </div>
           
         </div>
+      
+        {setContext.Loginpage &&
         
         <LoginPage/>
+        
+        }
+        {setContext.Signuplogin &&
+        
+        <LoginPage/>
+        
+        }
+        { setContext.Signupopen &&
+        <SignUp/>}
+      {setContext.Forgetpassword &&
+        <Password/>}
       </div>
       
       
+    </div>
     </div>
 
 
