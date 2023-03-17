@@ -8,7 +8,7 @@
 .container{
     /* position: fixed; */
     position:relative;
-    left: 10px;
+    left: 100px;
     z-index: 1111;
 }
 .row{
@@ -156,6 +156,7 @@
     height: 100vh;
     width: 100vw;
 }
+
 
 /* .app-wrapper{
     position: absolute;

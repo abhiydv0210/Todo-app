@@ -19,9 +19,11 @@ function Sidebar(Hidedone, id) {
 
 
   return (
+    
+    
     <div className='back'>
-    <div >
-      {setContext.Open && <><div className="container   ">
+    <div>
+      {setContext.Open && <><div className="container">
 
         <div className='app-wrapper '>
           <Navbar />
@@ -29,6 +31,8 @@ function Sidebar(Hidedone, id) {
         </div>
       </div>
       </>}
+      
+      
 
 
       <div id="row" className='grid text-center fix '>
@@ -54,9 +58,9 @@ function Sidebar(Hidedone, id) {
       <div className='col-sm-3 list'>
         {/* <div id ='e2'> */}
         <div id='a1'>
-          <div id='fcol1'></div><div>Study</div></div>
+          <div id='fcol1'></div><div>Work</div></div>
         <div id='a2'>
-          <div id='fcol2'></div><div>Work</div></div>
+          <div id='fcol2'></div><div>Study</div></div>
         <div id='a3'>
           <div id='fcol3'></div><div>Environment</div></div>
         <div id='a4'>
@@ -89,6 +93,7 @@ function Sidebar(Hidedone, id) {
         }
         { setContext.Signupopen &&
         <SignUp/>}
+        
       {setContext.Forgetpassword &&
         <Password/>}
       </div>
@@ -96,6 +101,10 @@ function Sidebar(Hidedone, id) {
       
     </div>
     </div>
+    
+  
+   
+    
 
 
 
