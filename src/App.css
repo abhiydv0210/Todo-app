@@ -5,12 +5,13 @@
 
 }
 .container{
-  color: grey;
-  width : 100vh;
+  /* color: grey; */
+  margin: 0px;
+  width : 100vw;
   min-height: 100vh;
   display: flex;
-  /* background-color: rgba(0,0,0,0.5);
-  z-index: 2; */
+  /* background-color: rgba(0,0,0,0.5); */
+  /* z-index: 2;  */
   justify-content: center;
   align-items: center;
 
@@ -30,6 +31,6 @@
   text-align : center;
   margin : 30px 0;
 }
-.mainDiv::backdrop{
+/* .mainDiv::backdrop{
 background-color: gray;
-}
+} */

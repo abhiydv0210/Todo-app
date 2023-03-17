@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import './App.css';
+import Color from './components/Color';
 import Sidebar from './components/Sidebar';
 
 const initialState = {
@@ -75,7 +76,6 @@ const reducer = (state, action) => {
         isDone: false
 
       }
-      console.log(add, "---->s")
       if (typeof state.currentID === undefined)
         return { ...state }
       //array todos -.> index data update 
@@ -88,6 +88,7 @@ const reducer = (state, action) => {
         Editadd: false,
         Open: false,
         optionedit: false,
+        // selectedTagIds:[]
 
       };
     case 'Todos':
@@ -95,7 +96,7 @@ const reducer = (state, action) => {
         ...state,
         isDone: false,
 
-        Todos: [...state.Todos, { title: state.title, description: state.description, selectedTags: [state.selectedTags] }],
+        Todos: [...state.Todos, { title: state.title, description: state.description, selectedTags: [state.selectedTags],selectedTagIds:[state.selectedTagIds] }],
       }
 
     case 'Editclose':
@@ -134,13 +135,20 @@ const reducer = (state, action) => {
     case 'optionedit':
 
       let edit = state.Todos;
-      // console.log(action, "--->action")
 
       let updat = edit.filter((item, index) => {
         if (index === action.id)
           index = edit
         return item;
       });
+      // let set = state.selectedTags;
+
+      // let ids = set.filter((item,index) => {
+      //   if(index===action.id)
+      //   return item;
+      // }); 
+      // // console.log(updat[action.id], "action")
+      // console.log(updat,"----");
 
       return {
         ...state,
@@ -150,11 +158,12 @@ const reducer = (state, action) => {
         Editadd: true,
         updatebutton: true,
         Editclose: false,
-        currentID: action.id,
-        // tagID: updat[action.id].selectedTagIds,
+        currentID: [action.id],
+        // TagID:updat[action.id].tagID,
         selectedTags: updat[action.id].selectedTags,
         title: updat[action.id].title,
         description: updat[action.id].description,
+      //  selectedTagIds: ids[action.id]
 
       }
 
@@ -298,9 +307,9 @@ function App() {
   return <>
 
     <userContext.Provider value={{ ...state, dispatch }}>
-      <div className='mainDiv'>
+      
       <Sidebar state={state} dispatch={dispatch} />
-      </div>
+      
     </userContext.Provider>
   </>
 }

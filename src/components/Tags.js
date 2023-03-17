@@ -7,7 +7,7 @@ const Tags = () => {
   const setContext = useContext(userContext)
   const selectedButton = setContext.selectedTags;
   // console.log(setContext.selectedTags, '+++.')
-
+console.log(selectedButton,setContext,"selected")
   return (
     <>
       <p id={Style["space"]}>Tags</p>
@@ -16,16 +16,17 @@ const Tags = () => {
         <div id={Style["green"]} className={Style["dot"]}><span id={Style["span2"]}></span>Study</div>
         <div id={Style["blue"]} className={Style["dot"]}><span id={Style["span3"]}></span>Environment</div>
         <div id={Style["red"]} className={Style["dot"]}><span id={Style["span4"]}></span>Family</div> */}
-      
+
         {
           setContext.tags.map(tag => <><div id={Style[`buttonColor-${tag.id}`]}
-          className={setContext.selectedTagIds.includes(tag.id) ? ` border ${Style["dot"]}` : `${Style["dot"]}`}
-          onClick={()=>setContext.dispatch({type:"selectTag", data: tag })}
-        >
-          <span id={Style[`span${tag.id}`]}></span>{tag.label}</div></>
+            className={setContext.selectedTagIds.includes(tag.id) ? ` border ${Style["dot"]}` : `${Style["dot"]}`}
+            onClick={() => setContext.dispatch({ type: "selectTag", data: tag })}
+          >
+            <span id={Style[`span${tag.id}`]}></span>{tag.label}</div></>
           )
         }
 
+        
       </div>
     </>
   )

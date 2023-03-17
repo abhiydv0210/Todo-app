@@ -10,7 +10,7 @@ import Style from '../components/Tags.module.css'
 function Navbar({ id }) {
   const setContext = useContext(userContext)
 
-  const { state, dispatch } = setContext
+  const { dispatch } = setContext
   const selectedButton = setContext.selectedTags;
 
 
