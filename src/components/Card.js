@@ -18,6 +18,7 @@ const Card = ({ title, description, id, tags, setOption, option, isDone }) => {
   // console.log(option,'option');
   return (
     <>
+    <div id="man">
 
       <div className='fit'>
         <div className="tag  ">
@@ -51,6 +52,7 @@ const Card = ({ title, description, id, tags, setOption, option, isDone }) => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
 

@@ -21,9 +21,9 @@ function Sidebar(Hidedone, id) {
   return (
     
     
-    <div className='back'>
-    <div>
-      {setContext.Open && <><div className="container">
+    <div className='inback' >
+    <div >
+      {setContext.Open && <><div className="back">
 
         <div className='app-wrapper '>
           <Navbar />
@@ -31,6 +31,7 @@ function Sidebar(Hidedone, id) {
         </div>
       </div>
       </>}
+      </div>
       
       
 
@@ -80,12 +81,13 @@ function Sidebar(Hidedone, id) {
           </div>
           
         </div>
-      
+      <div className='in'>
         {setContext.Loginpage &&
         
         <LoginPage/>
         
         }
+        </div>
         {setContext.Signuplogin &&
         
         <LoginPage/>
@@ -100,7 +102,7 @@ function Sidebar(Hidedone, id) {
       
       
     </div>
-    </div>
+   
     
   
    

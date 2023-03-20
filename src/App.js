@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import './App.css';
-import Color from './components/Color';
+
 import Sidebar from './components/Sidebar';
 
 const initialState = {
