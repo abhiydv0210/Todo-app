@@ -1,10 +1,23 @@
 const base = 'http://192.168.29.145:8000/';
 const endpoint = 'user/register';
 
+
+
 const useFetchAPI = () => {
+
+    let myHeaders = new Headers();
+
+     let token= localStorage.getItem("token")||""
+     console.log(token,"I m a Token");
+      myHeaders.append("Content-Type", "application/json");
+ 
+       myHeaders.append("Authorization",`Bearer ${token}`);
+      
+
     const apifunction = async (endpoint, type, data, res) => {
-        let myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+        
+      
+
         let raw = JSON.stringify(data);
 
         let requestOptions = {
@@ -29,7 +42,7 @@ myHeaders.append("Content-Type", "application/json");
             res(data, null);
         }
         catch (error) {
-            console.log(error,"====>")
+            console.log(error,"====>", base + endpoint, requestOptions)
 
             res(null, error.message)
         }

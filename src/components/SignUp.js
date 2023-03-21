@@ -10,16 +10,16 @@ function SignUp() {
   const [data, setData] = useState({});
   const api = useFetchAPI();
   const validate = (data) =>{
-    if(!data["firstName"] && data["firstName"].length>=3 )
+    if(!data["firstName"]  )
     return false; 
-    else if(!data["lastName"] && data["lastName"].length>=3 )
-    return false; 
-    else if(!data["email"] && data["email"].length>=8 )
-    return false; 
-    else if(!data["password"] && data["password"].length>=5 )
-    return false; 
-    else if(!data["confirm_password"] && data["confirm_password"].length>=5 )
-    return false; 
+    // else if(!data["lastName"] && data["lastName"].length>=3 )
+    // return false; 
+    // else if(!data["email"] && data["email"].length>=8 )
+    // return false; 
+    // else if(!data["password"] && data["password"].length>=5 )
+    // return false; 
+    // else if(!data["confirm_password"] && data["confirm_password"].length>=5 )
+    // return false; 
 
 
 
