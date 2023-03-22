@@ -7,30 +7,19 @@ import useFetchAPI from './FetchAPI';
 function Navbar({ id }) {
   const setContext = useContext(userContext)
   const { dispatch } = setContext
-  const [bar, setBar] = useState({})
-  const loginapi = useFetchAPI();
-  const validate = (data) =>{
-    if(!bar["title"] )
-    return false;
-    if(!bar["description"]  )
-    return false;
-
-    return true ; 
-  }
+  // const [navbar, setNavBar] = useState({})
+  const addapi = useFetchAPI();
+  
   
 
-  const selectedButton = setContext.selectedTags;
+  // const selectedButton = setContext.selectedTags;
 
 
 
   const addHandler = () => {
-    const result = validate(bar)
-    console.log("adsfasfs")
-    if(!result){
-      alert("please fill all the filed correctly")
-      return
-    }
-    loginapi("user/addTodo", "POST", bar, (res, error)=>{
+    let add={title: setContext.title, description:setContext.description}
+    
+    addapi("user/addTodo", "POST",add, (res, error)=>{
       if(error){
         alert(error)
         console.log(error, "error from api")
@@ -51,13 +40,10 @@ function Navbar({ id }) {
 
   
   const updateHandler = () => {
-    const result = validate(bar)
-    console.log("adsfasfs")
-    if(!result){
-      alert("please fill all the filed correctly")
-      return
-    }
-    loginapi("user/updateTodo", "POST", bar, (res, error)=>{
+    let update={title: setContext.title, description:setContext.description}
+
+   
+    addapi("user/updateTodo", "PUT", update, (res, error)=>{
       if(error){
         alert(error)
         console.log(error, "error from api")

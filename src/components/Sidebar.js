@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App'
 import Tags from './Tags';
 import Card from './Card';
@@ -8,6 +8,7 @@ import "./Sidebar.css"
 import LoginPage from './ LoginPage';
 import SignUp from './SignUp';
 import Password from './Password';
+import useFetchAPI from './FetchAPI';
 
 
 
@@ -16,24 +17,43 @@ function Sidebar(Hidedone, id) {
   const [option, setOption] = useState(-1)
   const { dispatch } = setContext
   console.log(setContext.Todos, "=====")
+  const api = useFetchAPI();
+
+  useEffect(() => {
+    if (setContext.userLogin) {
+      api("user/all-todo", "GET", null, (res, error) => {
+        if (error) {
+          alert(error)
+          console.log(error, "error from api")
+        }
+        else {
+
+          dispatch({ type: "setTodoFromAPI", todo: res.AllTodo })
+          // localStorage.setItem("token", res.access_token)
+          console.log(res.AllTodo , "----> res.AllTodo ")
+
+        }
+      })
+    }
+  }, [setContext.userLogin])
 
 
   return (
-    
-    
-    <div className='inback' >
-    <div >
-      {setContext.Open && <><div className="back">
 
-        <div className='app-wrapper '>
-          <Navbar />
-          <Tags />
+
+    <div className='inback' >
+      <div >
+        {setContext.Open && <><div className="back">
+
+          <div className='app-wrapper '>
+            <Navbar />
+            <Tags />
+          </div>
         </div>
+        </>}
       </div>
-      </>}
-      </div>
-      
-      
+
+
 
 
       <div id="row" className='grid text-center fix '>
@@ -44,9 +64,10 @@ function Sidebar(Hidedone, id) {
         <div className='g-row-6'>
 
           {setContext.Todos.map((todo, i) => {
+            console.log(todo,"===todo")
             return (todo.isDone && setContext.HideDonetask) ? <></> :
               <div key={i} className='row'>
-                <Card isDone={todo.isDone} tags={todo.selectedTags} title={todo.title} description={todo.description} id={i} option={option} setOption={setOption} /></div>
+                <Card isDone={todo.isDone} tags={todo.tags} title={todo.title} description={todo.description} id={todo._id} option={option} setOption={setOption} /></div>
           })}</div>
 
 
@@ -69,44 +90,44 @@ function Sidebar(Hidedone, id) {
         <div id='a5'>
           <input id='fcol5' className='mt-5' type='checkbox' onClick={() => dispatch({ type: 'HideDonetask', id, Hidedone })} />
           <label className='ps-2'>Hide Done tasks </label>
-          
-          <div className='tonn'>
-          {setContext.Loginpage ? (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Logout'})}>Logout</button>)
-          :(<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Loginpage'})}>Login</button>)
-            
-          
-          }
 
-          
+          <div className='tonn'>
+            {setContext.Loginpage ? (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Logout' })}>Logout</button>)
+              : (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Loginpage' })}>Login</button>)
+
+
+            }
+
+
           </div>
-          
+
         </div>
-      <div className='in'>
-        {setContext.Loginpage &&
-        
-        <LoginPage/>
-        
-        }
+        <div className='in'>
+          {setContext.Loginpage &&
+
+            <LoginPage />
+
+          }
         </div>
         {setContext.Signuplogin &&
-        
-        <LoginPage/>
-        
+
+          <LoginPage />
+
         }
-        { setContext.Signupopen &&
-        <SignUp/>}
-        
-      {setContext.Forgetpassword &&
-        <Password/>}
+        {setContext.Signupopen &&
+          <SignUp />}
+
+        {setContext.Forgetpassword &&
+          <Password />}
       </div>
-      
-      
+
+
     </div>
-   
-    
-  
-   
-    
+
+
+
+
+
 
 
 

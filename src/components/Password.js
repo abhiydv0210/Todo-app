@@ -9,7 +9,7 @@ function Password() {
   const {dispatch } = setContext;
   const api = useFetchAPI();
   const validate = (pass) =>{
-    if(!pass["email"] )
+    if(!pass["tags"] )
     return false;
     else
     return true ; 

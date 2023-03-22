@@ -18,13 +18,14 @@ const initialState = {
   Donetask: false,
   HideDonetask: false,
   Loginpage: false,
-  Loginclose:false,
+  Loginclose: false,
   Signupopen: false,
-  Signupclose:false,
-  Forgetpassword:false,
-  Forgetclose:false,
-  Signuplogin:false,
-
+  Signupclose: false,
+  Forgetpassword: false,
+  Forgetclose: false,
+  Signuplogin: false,
+  userLogin: false,
+  login:false,
 
   tags: [
     {
@@ -53,6 +54,12 @@ export const userContext = React.createContext(initialState);
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "setTodoFromAPI":
+      console.log(action,"actuinadfads")
+      return {...state, Todos:action.todo }
+
+    case "setUserLogin":
+      return { ...state, userLogin: action.status }
 
     case 'Open':
 
@@ -96,7 +103,7 @@ const reducer = (state, action) => {
         ...state,
         isDone: false,
 
-        Todos: [...state.Todos, { title: state.title, description: state.description, selectedTags: [state.selectedTags],selectedTagIds:[state.selectedTagIds] }],
+        Todos: [...state.Todos, { title: state.title, description: state.description, selectedTags: [state.selectedTags], selectedTagIds: [state.selectedTagIds] }],
       }
 
     case 'Editclose':
@@ -163,7 +170,7 @@ const reducer = (state, action) => {
         selectedTags: updat[action.id].selectedTags,
         title: updat[action.id].title,
         description: updat[action.id].description,
-      //  selectedTagIds: ids[action.id]
+        //  selectedTagIds: ids[action.id]
 
       }
 
@@ -223,7 +230,7 @@ const reducer = (state, action) => {
 
       return {
         ...state,
-        HideDonetask:!state.HideDonetask
+        HideDonetask: !state.HideDonetask
       }
     case 'tags':
       return {
@@ -242,62 +249,72 @@ const reducer = (state, action) => {
         description: action.id,
 
       };
-      case 'Loginpage':
-        return{
-          ...state,
-          Loginpage :true
-        }
-        case 'Loginclose':
-        return{
-          ...state,
-          Loginclose:true,
-          Loginpage :false,
-          Signuplogin:false
-        }
-        case 'Signupopen':
-        return{
-          ...state,
-          Signupopen:true,
-          Loginpage:false
-          
-        }
-        case 'Signupclose':
-        return{
-          ...state,
-          Signupclose:true,
-          Signupopen:false
-          
-        }
-        case 'Forgetpassword':
-        return{
-          ...state,
-          Forgetpassword:true,
-          Signupopen:false,
-          Loginpage:false,
-          Signuplogin:false
-          
-        }
-        case 'Forgetclose':
-        return{
-          ...state,
-          Forgetclose:true,
-          Forgetpassword:false
-          
-        }
-        case 'Signuplogin':
-        return{
-          ...state,
-          Signuplogin:true,
-          Forgetpassword:false,
-          Signupopen:false,
-          
-          
-        }
-        // case'Signupclose':
-        // return{
-        //   ...state,
-        //   Loginclose:true
-        // }
+      case'login':
+      return{
+        ...state,
+        login:true,
+        Loginclose:false,
+        Loginpage:false,
+        Signuplogin: false
+
+      }
+    case 'Loginpage':
+      return {
+        ...state,
+        Loginpage: true,
+        
+      }
+    case 'Loginclose':
+      return {
+        ...state,
+        Loginclose: true,
+        Loginpage: false,
+        Signuplogin: false
+      }
+    case 'Signupopen':
+      return {
+        ...state,
+        Signupopen: true,
+        Loginpage: false
+
+      }
+    case 'Signupclose':
+      return {
+        ...state,
+        Signupclose: true,
+        Signupopen: false
+
+      }
+    case 'Forgetpassword':
+      return {
+        ...state,
+        Forgetpassword: true,
+        Signupopen: false,
+        Loginpage: false,
+        Signuplogin: false
+
+      }
+    case 'Forgetclose':
+      return {
+        ...state,
+        Forgetclose: true,
+        Forgetpassword: false
+
+      }
+    case 'Signuplogin':
+      return {
+        ...state,
+        Signuplogin: true,
+        Forgetpassword: false,
+        Signupopen: false,
+
+
+      }
+    // case'Signupclose':
+    // return{
+    //   ...state,
+    //   Loginclose:true
+    // }
 
 
   }
@@ -307,9 +324,9 @@ function App() {
   return <>
 
     <userContext.Provider value={{ ...state, dispatch }}>
-      
+
       <Sidebar state={state} dispatch={dispatch} />
-      
+
     </userContext.Provider>
   </>
 }

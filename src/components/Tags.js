@@ -1,11 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 
 import { userContext } from '../App';
 import Style from '../components/Tags.module.css'
+import useFetchAPI from './FetchAPI';
 
 const Tags = () => {
   const setContext = useContext(userContext)
   const selectedButton = setContext.selectedTags;
+  const [tags, setTags] = useState({})
+  const api = useFetchAPI();
+  
+  const validate = (data) =>{
+    if(!tags["tags"] )
+    return false;
+    
+    
+
+    return true ; 
+  }
+  const Tags = () => {
+    console.log(tags,"---")
+    const result = validate(tags)
+    console.log("adsfasfs")
+    if(!result){
+      alert("please fill all the filed correctly")
+      return
+    }
+    api("user/login", "POST", tags, (res, error)=>{
+      if(error){
+        alert(error)
+        console.log(error, "error from api")
+      }else{
+       
+        console.log(res, "---->")
+      }
+    })
+    }
+
   // console.log(setContext.selectedTags, '+++.')
 console.log(selectedButton,setContext,"selected")
   return (
@@ -22,7 +53,7 @@ console.log(selectedButton,setContext,"selected")
             className={setContext.selectedTagIds.includes(tag.id) ? ` border ${Style["dot"]}` : `${Style["dot"]}`}
             onClick={() => setContext.dispatch({ type: "selectTag", data: tag })}
           >
-            <span id={Style[`span${tag.id}`]}></span>{tag.label}</div></>
+            <span id={Style[`span${tag.id}`]} onClick={Tags}></span>{tag.label}</div></>
           )
         }
 
