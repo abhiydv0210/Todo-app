@@ -9,15 +9,26 @@ import LoginPage from './ LoginPage';
 import SignUp from './SignUp';
 import Password from './Password';
 import useFetchAPI from './FetchAPI';
+import ResetPassword from './ResetPassword';
+import CreatePassword from './CreatePassword';
 
 
 
 function Sidebar(Hidedone, id) {
   const setContext = useContext(userContext)
   const [option, setOption] = useState(-1)
+  const [isLogin, setIsLogin] = useState(false)
   const { dispatch } = setContext
   console.log(setContext.Todos, "=====")
   const api = useFetchAPI();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setIsLogin(true)
+    } else {
+      setIsLogin(false)
+    }
+  }, [])
 
   useEffect(() => {
     if (setContext.userLogin) {
@@ -30,7 +41,7 @@ function Sidebar(Hidedone, id) {
 
           dispatch({ type: "setTodoFromAPI", todo: res.AllTodo })
           // localStorage.setItem("token", res.access_token)
-          console.log(res.AllTodo , "----> res.AllTodo ")
+          console.log(res.AllTodo, "----> res.AllTodo ")
 
         }
       })
@@ -61,16 +72,16 @@ function Sidebar(Hidedone, id) {
           <h3>todo</h3>
         </div>
         {/* <div className="g-row-6"><Card/></div> */}
-        <div className='g-row-6'>
+        <div  className='g-row-6'>
 
           {setContext.Todos.map((todo, i) => {
-            console.log(todo,"===todo")
+            console.log(todo, "===todo")
             return (todo.isDone && setContext.HideDonetask) ? <></> :
               <div key={i} className='row'>
                 <Card isDone={todo.isDone} tags={todo.tags} title={todo.title} description={todo.description} id={todo._id} option={option} setOption={setOption} /></div>
           })}</div>
 
-
+          
         <div className='g-row-3'><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
 
@@ -92,7 +103,7 @@ function Sidebar(Hidedone, id) {
           <label className='ps-2'>Hide Done tasks </label>
 
           <div className='tonn'>
-            {setContext.Loginpage ? (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Logout' })}>Logout</button>)
+            {setContext.userLogin ? (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Logout' })}>Logout</button>)
               : (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Loginpage' })}>Login</button>)
 
 
@@ -119,7 +130,20 @@ function Sidebar(Hidedone, id) {
 
         {setContext.Forgetpassword &&
           <Password />}
+
+        {setContext.Createpassword &&
+          <ResetPassword />}
+
+        {setContext.Newpassword &&
+          <CreatePassword />
+
+        }
+
+        {/* <ResetPassword/> */}
+        {/* <CreatePassword/> */}
       </div>
+
+
 
 
     </div>

@@ -26,6 +26,11 @@ const initialState = {
   Signuplogin: false,
   userLogin: false,
   login:false,
+  all:false,
+  Resetpasswordclose:false,
+  Createpassword :false,
+  Newpassword:false,
+  Createpasswordclose:false,
 
   tags: [
     {
@@ -59,8 +64,14 @@ const reducer = (state, action) => {
       return {...state, Todos:action.todo }
 
     case "setUserLogin":
-      return { ...state, userLogin: action.status }
-
+      return { ...state, 
+        userLogin: action.status };
+      case "all":
+        return {
+           ...state,
+          all:true
+        
+        }
     case 'Open':
 
       return {
@@ -308,6 +319,37 @@ const reducer = (state, action) => {
         Forgetpassword: false,
         Signupopen: false,
 
+
+      }
+      case 'Createpassword':
+      return {
+        ...state,
+        Createpassword:true,
+        Forgetclose:false,
+        Forgetpassword:false,
+        
+
+      }
+      case 'Resetpasswordclose':
+      return {
+        ...state,
+        Resetpasswordclose: true,
+        Createpassword:false
+
+      };
+      case 'Newpassword':
+      return {
+        ...state,
+        Newpassword:true,
+        Createpassword:false,
+        Resetpasswordclose:false
+
+      };
+      case 'Createpasswordclose':
+      return {
+        ...state,
+        Createpasswordclose:true,
+        Newpassword:false
 
       }
     // case'Signupclose':

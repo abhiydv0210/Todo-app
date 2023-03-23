@@ -7,14 +7,14 @@ import useFetchAPI from './FetchAPI';
 function Password() {
     const setContext = useContext(userContext)
   const {dispatch } = setContext;
+  const [pass, setPass] = useState({});
   const api = useFetchAPI();
   const validate = (pass) =>{
-    if(!pass["tags"] )
+    if(!pass["email"] )
     return false;
     else
     return true ; 
   }
-  const [pass, setPass] = useState({})
   const sendOTP = () => {
     const result = validate(pass) 
     if(!result){
@@ -29,7 +29,8 @@ function Password() {
   
         console.log(res, "---->")
       }
-    })
+    });
+    dispatch({ type: "Createpassword" });
     }
 
   return (
