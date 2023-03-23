@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './LoginPage.css';
 import { userContext } from '../App';
 import useFetchAPI from './FetchAPI';
@@ -6,11 +6,16 @@ import useFetchAPI from './FetchAPI';
 
 function LoginPage() {
   const setContext = useContext(userContext)
+
+
   const { dispatch } = setContext;
-  const [log, setLog] = useState({})
+  const [log, setLog] = useState({});
+  const [all, setAll] = useState(false);
   const api = useFetchAPI();
 
-  const validate = (data) => {
+  
+
+  const validate = (log) => {
     if (!log["email"])
       return false;
     if (!log["password"])
@@ -36,13 +41,9 @@ function LoginPage() {
         dispatch({type:"setUserLogin", status: true})
         console.log(res, "---->")
       }
-    });
-    dispatch({ type: "login" })
-
+    }); 
+    dispatch({ type: "login" });  
   }
-
-
-
 
   return (
     <form onSubmit={e => e.preventDefault()}>
@@ -68,7 +69,7 @@ function LoginPage() {
         </div>
         <br></br>
 
-        <button id='wid' type="login" class="btn btn-danger" onClick={login}>login</button>
+        <button id='wid' type="login" class="btn btn-danger" onClick={login} >login</button>
         <h6 id='back' onClick={() => dispatch({ type: 'Forgetpassword' })}>Forget Password ?</h6>
         <hr></hr>
         <p id='acc'>Already have an account ?</p>

@@ -9,6 +9,8 @@ const Card = ({ title, description, id, tags, setOption, option, isDone }) => {
 
   const { dispatch } = setContext
 
+  console.log('23456789[[[[')
+
 
   const clickHandler = (id) => {
     if (option === id)

@@ -40,22 +40,22 @@ function Navbar({ id }) {
 
   
   const updateHandler = () => {
-    let update={title: setContext.title, description:setContext.description}
+    // let update={title: setContext.title, description:setContext.description}
 
    
-    addapi("user/updateTodo", "PUT", update, (res, error)=>{
-      if(error){
-        alert(error)
-        console.log(error, "error from api")
-      }else{
+    // addapi("user/updateTodo", "PUT", update, (res, error)=>{
+    //   if(error){
+    //     alert(error)
+    //     console.log(error, "error from api")
+    //   }else{
         
-        console.log(res, "---->")
-      }
-    })
-    if (!setContext.title || !setContext.description) {
-      alert("Please fill the data");
-      return;
-    }
+    //     console.log(res, "---->")
+    //   }
+    // })
+    // if (!setContext.title || !setContext.description) {
+    //   alert("Please fill the data");
+    //   return;
+    // }
 
     dispatch({ type: "updatebutton", id })
   }
