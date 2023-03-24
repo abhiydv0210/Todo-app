@@ -25,12 +25,13 @@ const initialState = {
   Forgetclose: false,
   Signuplogin: false,
   userLogin: false,
-  login:false,
-  all:false,
-  Resetpasswordclose:false,
-  Createpassword :false,
-  Newpassword:false,
-  Createpasswordclose:false,
+  login: false,
+  all: false,
+  Resetpasswordclose: false,
+  Createpassword: false,
+  Newpassword: false,
+  Createpasswordclose: false,
+  Logout: false,
 
   tags: [
     {
@@ -60,18 +61,21 @@ export const userContext = React.createContext(initialState);
 const reducer = (state, action) => {
   switch (action.type) {
     case "setTodoFromAPI":
-      console.log(action,"actuinadfads")
-      return {...state, Todos:action.todo }
+      console.log(action, "actuinadfads")
+      return { ...state, Todos: action.todo }
 
     case "setUserLogin":
-      return { ...state, 
-        userLogin: action.status };
-      case "all":
-        return {
-           ...state,
-          all:true
-        
-        }
+      
+      return {
+        ...state,
+        userLogin: action.status,
+      };
+    case "all":
+      return {
+        ...state,
+        all: true
+
+      }
     case 'Open':
 
       return {
@@ -133,8 +137,9 @@ const reducer = (state, action) => {
       let todo = {
         title: state.title,
         description: state.description,
-        selectedTags: state.selectedTags,
-        isDone: false
+        // selectedTags: state.selectedTags,
+        isDone: false,
+        tags: [state.selectedTags]
       }
       return {
         ...state,
@@ -142,8 +147,6 @@ const reducer = (state, action) => {
         Editclose: false,
         Open: false,
         isDone: false,
-        title: action.data,
-        description: action.data,
         Todos: [...state.Todos, todo],
         title: "",
         description: "",
@@ -173,12 +176,13 @@ const reducer = (state, action) => {
         Todos: updat,
         Open: true,
         optionedit: true,
-        Editadd: true,
+        Editadd: false,
         updatebutton: true,
         Editclose: false,
         currentID: [action.id],
-        // TagID:updat[action.id].tagID,
-        selectedTags: updat[action.id].selectedTags,
+        // tags: updat[action.id].tags,
+        // tags: [],
+        // selectedTags:updat[action.id].selectedTags,
         title: updat[action.id].title,
         description: updat[action.id].description,
         //  selectedTagIds: ids[action.id]
@@ -260,12 +264,12 @@ const reducer = (state, action) => {
         description: action.id,
 
       };
-      case'login':
-      return{
+    case 'login':
+      return {
         ...state,
-        login:true,
-        Loginclose:false,
-        Loginpage:false,
+        login: true,
+        Loginclose: false,
+        Loginpage: false,
         Signuplogin: false
 
       }
@@ -273,7 +277,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         Loginpage: true,
-        
+        Logout:false,
+
       }
     case 'Loginclose':
       return {
@@ -321,35 +326,43 @@ const reducer = (state, action) => {
 
 
       }
-      case 'Createpassword':
+    case 'Createpassword':
       return {
         ...state,
-        Createpassword:true,
-        Forgetclose:false,
-        Forgetpassword:false,
-        
+        Createpassword: true,
+        Forgetclose: false,
+        Forgetpassword: false,
+
 
       }
-      case 'Resetpasswordclose':
+    case 'Resetpasswordclose':
       return {
         ...state,
         Resetpasswordclose: true,
-        Createpassword:false
+        Createpassword: false
 
       };
-      case 'Newpassword':
+    case 'Newpassword':
       return {
         ...state,
-        Newpassword:true,
-        Createpassword:false,
-        Resetpasswordclose:false
+        Newpassword: true,
+        Createpassword: false,
+        Resetpasswordclose: false
 
       };
-      case 'Createpasswordclose':
+    case 'Createpasswordclose':
       return {
         ...state,
-        Createpasswordclose:true,
-        Newpassword:false
+        Createpasswordclose: true,
+        Newpassword: false
+
+      }
+    case 'Logout':
+      return {
+        ...state,
+        Logout: true,
+        Loginpage: false,
+        userLogin:false
 
       }
     // case'Signupclose':

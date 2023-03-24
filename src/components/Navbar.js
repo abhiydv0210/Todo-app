@@ -17,7 +17,7 @@ function Navbar({ id }) {
 
 
   const addHandler = () => {
-    let add={title: setContext.title, description:setContext.description}
+    let add={title: setContext.title, description:setContext.description,tags:setContext.selectTag}
     
     addapi("user/addTodo", "POST",add, (res, error)=>{
       if(error){
