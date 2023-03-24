@@ -1,4 +1,4 @@
-const base = 'http://192.168.29.145:8000/';
+const base = 'https://todo-api-xu4f.onrender.com/';
 const endpoint = 'user/register';
 
 
@@ -8,7 +8,7 @@ const useFetchAPI = () => {
     let myHeaders = new Headers();
 
      let token= localStorage.getItem("token")||""
-     console.log(token,"I m a Token");
+    //  console.log(token,"I m a Token");
       myHeaders.append("Content-Type", "application/json");
  
        myHeaders.append("Authorization",`Bearer ${token}`);

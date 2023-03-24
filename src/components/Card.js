@@ -9,7 +9,7 @@ const Card = ({ title, description, id, tags, setOption, option, isDone }) => {
 
   const { dispatch } = setContext
 
-  console.log('23456789[[[[')
+  console.log(tags,'23456789[[[[')
 
 
   const clickHandler = (id) => {
@@ -44,7 +44,7 @@ const Card = ({ title, description, id, tags, setOption, option, isDone }) => {
 
               <div className='d-flex'>
                 <div id="ta" className='col-sm-4'>
-                  {tags.map(tag => <div key={tag.id} className={`tag${tag.id}`}></div>)}
+                  {/* {tags.map(tag => <div key={tag.id} className={`tag${tag.id}`}></div>)} */}
                 </div>
                 <div className='col-sm-5'> </div>
                 <div className='col-sm-4'>

@@ -18,12 +18,36 @@ function Sidebar(Hidedone, id) {
   const setContext = useContext(userContext)
   const [option, setOption] = useState(-1)
   const [isLogin, setIsLogin] = useState(false)
+  
   const { dispatch } = setContext
-  console.log(setContext.Todos, "=====")
+  console.log(setContext, "=====")
   const api = useFetchAPI();
 
+  const Removetoken =()=>{
+    localStorage.clear()
+
+     dispatch({ type: 'Logout' })
+  }
+
   useEffect(() => {
+    
     if (localStorage.getItem('token')) {
+      api("user/all-todo", "GET", null, (res, error) => {
+        if (error) {
+          alert(error)
+          console.log(error, "error from api")
+         
+        }
+        else {
+        dispatch({ type: 'setUserLogin', status:true})
+          dispatch({ type: "setTodoFromAPI", todo: res.AllTodo })
+          // localStorage.setItem("token", res.access_token)
+          console.log(res.AllTodo, "----> res.AllTodo ")
+
+        }
+       
+      })
+
       setIsLogin(true)
     } else {
       setIsLogin(false)
@@ -48,7 +72,7 @@ function Sidebar(Hidedone, id) {
     }
   }, [setContext.userLogin])
 
-
+console.log(setContext,'workkkkkkkkkkkkkkkkkkkk')
   return (
 
 
@@ -72,16 +96,16 @@ function Sidebar(Hidedone, id) {
           <h3>todo</h3>
         </div>
         {/* <div className="g-row-6"><Card/></div> */}
-        <div  className='g-row-6'>
+        <div className='g-row-6'>
 
           {setContext.Todos.map((todo, i) => {
             console.log(todo, "===todo")
             return (todo.isDone && setContext.HideDonetask) ? <></> :
-              <div key={i} className='row'>
+              <div key={todo._id} className='row'>
                 <Card isDone={todo.isDone} tags={todo.tags} title={todo.title} description={todo.description} id={todo._id} option={option} setOption={setOption} /></div>
           })}</div>
 
-          
+
         <div className='g-row-3'><h1 onClick={() => dispatch({ type: 'Open' })} >+</h1>
         </div>
 
@@ -102,8 +126,11 @@ function Sidebar(Hidedone, id) {
           <input id='fcol5' className='mt-5' type='checkbox' onClick={() => dispatch({ type: 'HideDonetask', id, Hidedone })} />
           <label className='ps-2'>Hide Done tasks </label>
 
-          <div className='tonn'>
-            {setContext.userLogin ? (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Logout' })}>Logout</button>)
+          
+
+        </div>
+        <div className='tonn'>
+            {setContext.userLogin ? (<button id='ton' type="button" class="btn btn-danger" onClick={Removetoken }>Logout</button>)
               : (<button id='ton' type="button" class="btn btn-danger" onClick={() => dispatch({ type: 'Loginpage' })}>Login</button>)
 
 
@@ -111,8 +138,6 @@ function Sidebar(Hidedone, id) {
 
 
           </div>
-
-        </div>
         <div className='in'>
           {setContext.Loginpage &&
 
